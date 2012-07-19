@@ -1,0 +1,9 @@
+css,img,jsはtwiiterbootstrapの機能拡張用
+classはDB操作の一覧とメール送信
+conf.phpで共通設定管理
+
+index.phpよりログイン
+
+管理画面はadmin,admin_edit
+
+test,index_htmlは無視。
