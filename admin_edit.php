@@ -1,5 +1,5 @@
 <?php
-require_once("./member_db_class.php");
+require_once("class/member_db_class.php");
 session_start();
 $table = $_POST["table"];
 $inName=$_POST["id"];

@@ -1,6 +1,6 @@
 <?php
 //session_cache_limiter("private");
-require_once("member_db_class.php");
+require_once("class/member_db_class.php");
 //if(isset($_POST["back_top"])){delete_file();delete_session();}
 session_start();
 $date = date("Y-m-d",time());

@@ -1,6 +1,6 @@
 <?php
-require_once("member_db_class.php"); 
-require_once("mail_user_class.php"); 
+require_once("class/member_db_class.php"); 
+require_once("class/mail_user_class.php"); 
 $uid = $_POST['id'];
 $obj = new operationDb($conninfo);
 $obj->serachElement(TABLE_ADMIN, $uid);

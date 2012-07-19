@@ -1,5 +1,5 @@
 <?php
-require_once("member_db_class.php");
+require_once("class/member_db_class.php");
 session_cache_limiter('private_no_expire');
 session_start();
 $name = $_SESSION["name"];

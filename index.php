@@ -1,5 +1,6 @@
 <?php
-require_once("member_db_class.php");
+
+require_once("class/member_db_class.php");
 session_start();
 $name=$_POST["name"];
 $obj = new operationDb($conninfo);
@@ -11,7 +12,7 @@ if(isset($_POST["login"])){
 	if($_POST["name"] == $outname && $_POST["password"] == $outpass){
 		if(empty($_POST["name"]) && empty($_POST["password"])){//両方が空のとき
 			$error_message = "ユーザ名,パスワードが入力されていません";
-		header("Location:./login.php");exit;
+		header("Location:index.php");exit;
 		}
 		//nameとpassが照合できたとき
 		$_SESSION["name"] = $_POST["name"];
@@ -42,7 +43,7 @@ if(isset($_POST["login"])){
         <h2>目標×期限×記録=∞</h2>
         <h3>サインイン</h3>
         <div>
-        	<form id = "button1" action = "login.php" method = "POST">
+        	<form id = "button1" action = "index.php" method = "POST">
             <label>ID</label>
             <input type="text" name="name" value="">
             <label>パスワード</label>
@@ -56,7 +57,7 @@ if(isset($_POST["login"])){
         <div class="span4">
           <h2>サインアップ</h2>
            <p>このアプリを使うためにはサインインする必要があります。ここで登録した名前とパスワードでそのままサインインすることができます。</p>
-          <p><a class="btn" href="./signin.php">サインアップ &raquo;</a></p>
+          <p><a class="btn" href="signin.php">サインアップ &raquo;</a></p>
         </div>
          <!--このアプリを使うためにはログインする必要があります。ここで登録した名前とパスワードでそのままサインインすることができます。-->
         <div class="span4">

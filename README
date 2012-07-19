@@ -7,3 +7,11 @@ index.php‚æ‚èƒƒOƒCƒ“
 ŠÇ—‰æ–Ê‚Íadmin,admin_edit
 
 test,index_html‚Í–³‹B
+
+-----------------
+
+git rm f
+git rm cached f
+
+
+git push 
