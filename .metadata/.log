@@ -1,0 +1,31 @@
+!SESSION 2012-07-14 08:38:23.724 -----------------------------------------------
+eclipse.buildId=M20110210-1200
+java.version=1.6.0_31
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=ja_JP
+Framework arguments:  -product org.eclipse.epp.package.php.product -keyring /Users/togashikenta/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -product org.eclipse.epp.package.php.product -keyring /Users/togashikenta/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.jface 2 0 2012-07-14 08:39:19.801
+!MESSAGE キーバインドの競合が発生しました。 通常のアクセラレーター操作を妨げる可能性があります。
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-07-14 08:39:19.801
+!MESSAGE A conflict occurred for ALT+COMMAND+Q P:
+Binding(ALT+COMMAND+Q P,
+	ParameterizedCommand(Command(org.eclipse.ui.views.showView,ビューの表示,
+		特定のビューを表示します,
+		Category(org.eclipse.ui.category.views,ビュー,ビューを開くコマンド,true),
+		org.eclipse.ui.handlers.ShowViewHandler@18bdf2a,
+		[Lorg.eclipse.ui.internal.commands.Parameter;@1e84244,,true),[Lorg.eclipse.core.commands.Parameterization;@156b7c1),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+Binding(ALT+COMMAND+Q P,
+	ParameterizedCommand(Command(org.eclipse.ui.views.showView,ビューの表示,
+		特定のビューを表示します,
+		Category(org.eclipse.ui.category.views,ビュー,ビューを開くコマンド,true),
+		org.eclipse.ui.handlers.ShowViewHandler@18bdf2a,
+		[Lorg.eclipse.ui.internal.commands.Parameter;@1e84244,,true),[Lorg.eclipse.core.commands.Parameterization;@3a1e23),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY org.eclipse.core.net 1 0 2012-07-14 08:39:19.965
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
