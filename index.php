@@ -10,7 +10,7 @@ $outpass = $obj->outpass;
 
 if(isset($_POST["login"])){
 	if($_POST["name"] == $outname && $_POST["password"] == $outpass){
-		if(empty($_POST["name"]) && empty($_POST["password"])){//両方が空のとき
+		if(!isset($_POST["name"]) && !isset($_POST["password"])){//両方が空のとき
 			$error_message = "ユーザ名,パスワードが入力されていません";
 		header("Location:index.php");exit;
 		}
@@ -18,11 +18,11 @@ if(isset($_POST["login"])){
 		$_SESSION["name"] = $_POST["name"];
 		header("Location:select.php");//ユーザー画面にリダイレクト
 		exit;
-	}elseif($_POST["name"] == "kenken" && $_POST["password"] == "0302"){
+	}elseif($_POST["name"] == ADMIN_ID && $_POST["password"] == ADMIN_PASS){
 		header("Location:admin.php");//管理者画面にリダイレクト
 		exit;
 	}else{
-	$error_message = "ユーザ名,パスワードが間違っています";
+	$error_message = "ユーザ名もしくはパスワードが間違っています";
 	}
 }
 ?>
@@ -50,6 +50,7 @@ if(isset($_POST["login"])){
             <input type="password" name="password" value="">
             <input type="submit" name="login" value="サインイン" class="btn">
         	</form>
+        	<div style= "color:red;"><?php echo $error_message;?></div>
         </div>
 	  </div>
     

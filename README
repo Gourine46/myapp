@@ -4,9 +4,11 @@ conf.phpで共通設定管理
 
 index.phpよりログイン
 
-管理画面はadmin,admin_edit
+管理画面はadmin,admin_edit 0302,kenken
 
 test,index_htmlは無視。
+
+メールの自動送信は若干のタイムラグがある。
 
 -----------------
 

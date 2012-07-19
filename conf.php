@@ -5,11 +5,15 @@
  * utf8指定
  * */
 header('Content-Type: text/html; charset:utf-8');
-///Applications/XAMPP/xamppfiles/htdocs/apli1/main2
+///Applications/XAMPP/xamppfiles/htdocs/apli1/
 define('ROOT_PATH', dirname(__FILE__)."/..");
-define(TABLE_ADMIN,"id_pass");//会員id,pass,mailなど
-define(TABLE_CONTENT,"main");//会員が使うコンテンツ
+define('TABLE_ADMIN',"id_pass");//会員id,pass,mailなど
+define('TABLE_CONTENT',"main");//会員が使うコンテンツ
+define('ADMIN_ID',"kenken");//管理画面用
+define('ADMIN_PASS',"0302");//..
 set_include_path(get_include_path().PATH_SEPARATOR.ROOT_PATH);//インクルードパス指定
+
+$self=$_SERVER["SCRIPT_NAME"];
 $conninfo = array(
 	'host' => 'localhost',
 	'dbname' => 'db0togattti',
@@ -17,8 +21,7 @@ $conninfo = array(
 	'password' => '932Qbff9'
 );//DB接続情報
 
- $a = "";
-$self=$_SERVER["SCRIPT_NAME"];
+
 //githubにあげる。
 //サーバー環境
 //自動送信機能
