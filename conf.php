@@ -17,7 +17,7 @@ $conninfo = array(
 	'password' => '932Qbff9'
 );//DB接続情報
 
-
+ $a = "";
 $self=$_SERVER["SCRIPT_NAME"];
 //githubにあげる。
 //サーバー環境
