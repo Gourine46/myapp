@@ -32,9 +32,7 @@ class operationDb{
 	//dbpass:atpages:995944335995a5a27791
 	public $connect;//クラス自身のmysql_connect(,,,)を格納
 	public $inname;//会員登録用の名前
-	public $link;
-	public $row;
-	public $res;
+	
 	public function __construct($conninfo){
 		$this->connect = mysql_connect($conninfo['host'],$conninfo['user'],$conninfo['password'])
 		//or die("mysql connect failed!");

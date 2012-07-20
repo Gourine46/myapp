@@ -1,3 +1,1 @@
-
-php_value include_path ".:myapp"
-php_value auto_prepend_file conf.php
+php_value auto_prepend_file '/home/users/0/lolipop.jp-togattti/web/myapp/conf.php'
