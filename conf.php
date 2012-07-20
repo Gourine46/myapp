@@ -14,12 +14,19 @@ define('ADMIN_PASS',"0302");//..
 set_include_path(get_include_path().PATH_SEPARATOR.ROOT_PATH);//インクルードパス指定
 
 $self=$_SERVER["SCRIPT_NAME"];
+/*$conninfo = array(
+	'host' => 'mysql569.phy.lolipop.jp',
+	'dbname' => 'LAA0185366-togattti',
+	'user' => 'LAA0185366',
+	'password' => 'togattti'
+);*///ロリポDB接続情報
+
 $conninfo = array(
 	'host' => 'localhost',
 	'dbname' => 'db0togattti',
 	'user' => 'root',
 	'password' => '932Qbff9'
-);//DB接続情報
+);//ローカルDB接続情報
 
 
 //githubにあげる。

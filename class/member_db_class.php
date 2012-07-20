@@ -37,6 +37,8 @@ class operationDb{
 	public $res;
 	public function __construct($conninfo){
 		$this->connect = mysql_connect($conninfo['host'],$conninfo['user'],$conninfo['password'])
+		//or die("mysql connect failed!");
+		//$this->connect = mysql_connect('mysql569.phy.lolipop.jp','LAA0185366','togattti')
 		or die("mysql connect failed!");
 		mysql_query("SET CHARACTER SET utf8;");
 		mysql_select_db($conninfo['dbname'],$this->connect)

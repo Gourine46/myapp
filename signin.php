@@ -21,7 +21,6 @@ $obj->serachElement(TABLE_ADMIN,$inname);
 $mail = new MailUserClass();
 if($mail == 1){
 $mail->mailUser($obj->row["e_mail"],$mail->subject,$mail->mes1);
-
 }
 }
 }
