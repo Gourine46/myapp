@@ -37,13 +37,13 @@ $mail->mailUser($obj->row["e_mail"],$mail->subject,$mail->mes1);
 		<div <?php if($res) echo"style='display:none;'";?>>
 		<h1>サインアップ</h1>
 		<form action="<?php echo$self; ?>"  method="post">
-			<p><label>名前</label><input type="text" name="name" value=""></p>
+			<p><label>ID(半角英数字のみ)</label><input type="text" name="name" value=""></p>
 			<p><label>パスワード</label><input type="password" name="pass" value=""><p/>
 			<p><label>パスワード(確認のためもう一度記入してください)</label><input type="password" name="pass2"></p>
 			<p><label>e_mail</label><input type="text" name="e_mail"></p>
 			<input type="submit" name="conf" value="登録完了" class="btn">
 		</form>
-		<a href="./login.php">←戻る</a>
+		<a href="index.php">←戻る</a>
 		</div>
 		<div><?php echo $result;?></div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
