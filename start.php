@@ -1,17 +1,15 @@
 <?php
-//session_cache_limiter("private");
 require_once("class/member_db_class.php");
-//if(isset($_POST["back_top"])){delete_file();delete_session();}
 session_start();
 $date = date("Y-m-d",time());
 $name=$_SESSION["name"];
 $obj = new operationDb($conninfo);
-$obj->serachElement($table="main",$name);
+$obj->serachElement(TABLE_CONTENT,$name);
 $goal = $obj->row["goal"];
 $firstAction = $obj->row["firstAction"];
-$due_day = $obj->row["dueday"];
+$due_day = $obj->row["dueDay"];
 $dead_day = date("Y-m-d",time()+($due_day * 24 * 60 * 60));
-$obj->res;
+
 
 ?>
 <html>
@@ -27,7 +25,7 @@ $obj->res;
 	<body>
 		<div></div>
 		<h1><span id="midasi">Goal Planet</span></h1>
-		<a href="login.php">ログアウト</a>
+		<a href="index.php">ログアウト</a>
 		<h2>next step for <?php echo $_SESSION["name"];?></h2>
 		<form action="start2.php" method="post">
 			<?php echo$date;?>
@@ -49,9 +47,8 @@ $obj->res;
 				<h2>while you challenge <?php echo $_SESSION["name"];?></h2>
 				<label>目標</label><?php echo $goal ?>
 			<label>そのために今すぐやること</label><?php echo $firstAction ?>
-			<label>期限</label><?php echo $dead_day ?>
+			<label>期限</label><?php echo $dead_day ?><div>21:00時点</div>
 			<p>一度に設定できる目標は一人一つまでです。</p>
-			
 			<p>目標を決め直すときはここで一度消してから、再サインインしてください。</p>
 			<form name="delete" action="start2.php">
 			<input type="submit" value="リセット" class="btn">

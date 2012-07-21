@@ -3,27 +3,23 @@
 require_once("class/member_db_class.php");
 session_start();
 $name=$_POST["name"];
+$pass=$_POST["password"];
 $obj = new operationDb($conninfo);
 $obj->arrayDb($name);
 $outname = $obj->outname;
 $outpass = $obj->outpass;
 
-if(isset($_POST["login"])){
-	if($_POST["name"] == $outname && $_POST["password"] == $outpass){
-		if(!isset($_POST["name"]) && !isset($_POST["password"])){//両方が空のとき
-			$error_message = "ユーザ名,パスワードが入力されていません";
-		header("Location:index.php");exit;
-		}
-		//nameとpassが照合できたとき
-		$_SESSION["name"] = $_POST["name"];
-		header("Location:select.php");//ユーザー画面にリダイレクト
-		exit;
-	}elseif($_POST["name"] == ADMIN_ID && $_POST["password"] == ADMIN_PASS){
-		header("Location:admin.php");//管理者画面にリダイレクト
-		exit;
-	}else{
-	$error_message = "ユーザ名もしくはパスワードが間違っています";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+	if($name == $outname && $pass == $outpass && !empty($name) ){
+		$_SESSION["name"] = $name;
+		header("Location:select.php");
+	
+	}elseif($name == ADMIN_ID && $pass == ADMIN_PASS){
+		header("Location:admin.php");
+	
 	}
+		$error_message= "IDもしくはパスワード、また両方が入力されていません";
+	
 }
 ?>
 

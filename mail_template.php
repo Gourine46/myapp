@@ -8,7 +8,7 @@ $obj->serachElement(TABLE_ADMIN, $uid);
 $e_mail = $_POST["e_mail"];
 $subject = $_POST["subject"];
 $message = $_POST["message"];
-$mail = new MailUserClass();
+$mail = new MailUse();
 if(isset($e_mail) && isset($subject) && isset($message)){
 $mail->mailUser($e_mail,$subject,$message);
 $res = 1;

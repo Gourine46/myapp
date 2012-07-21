@@ -38,7 +38,7 @@ if(isset($_POST["reset"])){
 		<?php echo $name?>さん
 		<p>目標:<?php echo $save_data['goal']; ?></p>
 		<p>いますぐやるべきこと:<?php echo $save_data['firstAction']; ?></p>
-		<p>期限:<?php echo $save_data['dueday']; ?> 日後の21:00時点</p>
+		<p>期限:<?php echo $save_data['dueDay']; ?> 日後の21:00時点</p>
 		<p>まだ未達成です。</p>
 		<form action='<?php echo $self ?>' method='post'>
 		<input type='submit' value='目標を消す'>

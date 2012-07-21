@@ -28,8 +28,6 @@
  
 
 class operationDb{
-	//dbuser:atpages:togattti
-	//dbpass:atpages:995944335995a5a27791
 	public $connect;//クラス自身のmysql_connect(,,,)を格納
 	public $inname;//会員登録用の名前
 	
@@ -92,6 +90,7 @@ class operationDb{
 		 mysql_close($this->connect);
 	}
 	
+
 	public function serachElement($table,$id) {
 		/*テーブルを指定し、要素を検索する。
 		 * もしその要素が存在していれば、
@@ -106,7 +105,9 @@ class operationDb{
 		 			$this->row = $row;
 					mysql_close($this->connect)or die(mysql_error());
 					$res = true;//1を返す
+					
 					return $this->res = $res;
+					
 		 		}
 		 }
 		 }//if
@@ -122,6 +123,6 @@ class operationDb{
 		 	else{echo "できてないよ";}
 		 }
 	}//if
-}//serachElement
+	}//serachElement
 	
 }//class
