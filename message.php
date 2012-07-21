@@ -12,7 +12,7 @@ while($contents = mysql_fetch_array($result,MYSQL_ASSOC)){
 	$unix_now = time();
 	$unix_dead = time() + $contents["dueDay"]*24*60*60;
 	//if($unix_now > $unix_dead){
-		 
+		 $obj = new operationDb($conninfo);
 		 $obj->serachElement(TABLE_ADMIN,$contents["adminId"]);
 		 $e_mail = $obj->row["e_mail"];
 		 $name =  $contents["adminId"];
