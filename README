@@ -1,19 +1,24 @@
-css,img,js��twiiterbootstrap�̋@�\�g���p
-class��DB����̈ꗗ�ƃ��[�����M
-conf.php�ŋ��ʐݒ�Ǘ�
+【制作物】GoalPlanet
+【URL】<a href="http://togattti.lolipop.jp/myapp/">http://togattti.lolipop.jp/myapp/</a>
+【著作権者】@togattti(twiiterで...)
+【制作日】6/20~現在
+【連絡先】<a href="https://twitter.com/togattti">@togattti</a>
+【開発環境】
+　　MacOS,Appache,MySQL5,PHP5
+―――――――――――――――――――――――――――――――――――――
+≪著作権および免責事項≫
+著作権は作者
+である"<a href ="https://twitter.com/togattti" >@togattti</a> "が保有しています。
 
-index.php��胍�O�C��
+・はじめに
+<div>任意の目標を達成するために利用するTodo管理ツール</div>
+<div>期限を設定して、期限を迎えたとき進捗状況によ登録アドレスからメッセージを
+送らせていただきます。そのため会員登録の際には任意のメールアドレスが必要です。
 
-�Ǘ���ʂ�admin,admin_edit 0302,kenken
+・ファイル構成
+css,img,jsディレクトリはtwiiterbootstrapの機能拡張用
+classディレクトリはDB及びメール送信の操作に関する機能。
+conf.phpで共通設定を行っています。
+index.phpよりログインしてください。
 
-test,index_html�͖����B
-
-���[���̎������M�͎኱�̃^�C�����O������B
-
------------------
-
-git rm f
-git rm cached f
-
-
-git push 
+・履歴　7/21:α版を公開しました。
