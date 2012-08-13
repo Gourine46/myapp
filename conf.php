@@ -6,6 +6,11 @@
  * */
 header('Content-Type: text/html; charset:utf-8');
 ///Applications/XAMPP/xamppfiles/htdocs/apli1/
+define('APP_ID','218572684935212');
+define('APP_SECRET','72ddd7176ed834c6db53d98f4c28c8a7');
+define('SITE_URL', 'http://togattti.lolipop.jp/myapp/');
+error_reporting(E_ALL & ~E_NOTICE);
+session_set_cookie_params(0, '/myapp/');
 define('ROOT_PATH', dirname(__FILE__)."/..");
 define('TABLE_ADMIN',"registration");//会員id,pass,mailなど
 define('TABLE_CONTENT',"contents");//会員が使うコンテンツ
@@ -22,6 +27,10 @@ $conninfo = array(
 
 $mailinfo = array("from" => "2013sufla@gmail.com",
 					"to" => "kenta.togasi@gmail.com");
+
+
+
+
 /*$conninfo = array(
 	'host' => 'localhost',
 	'dbname' => 'db0togattti',

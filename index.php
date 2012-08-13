@@ -2,6 +2,7 @@
 
 require_once("class/member_db_class.php");
 session_start();
+
 $name=$_POST["name"];
 $pass=$_POST["password"];
 $obj = new operationDb($conninfo);
