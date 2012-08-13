@@ -1,11 +1,7 @@
 <?php
-/*
- * .htaccess
- * 共通設定ファイル
- * utf8指定
+/* 共通設定ファイル
  * */
 header('Content-Type: text/html; charset:utf-8');
-///Applications/XAMPP/xamppfiles/htdocs/apli1/
 define('APP_ID','218572684935212');
 define('APP_SECRET','72ddd7176ed834c6db53d98f4c28c8a7');
 define('SITE_URL', 'http://togattti.lolipop.jp/myapp/');
@@ -24,11 +20,20 @@ $conninfo = array(
 	'user' => 'LAA0185366',
 	'password' => 'togattti'
 );//ロリポDB接続情報
-
 $mailinfo = array("from" => "2013sufla@gmail.com",
 					"to" => "kenta.togasi@gmail.com");
 
-
+/*function h($s){
+	return htmlspecialchars($s);
+}
+function r($s){
+	return mysql_real_escape_string($s);
+}
+*/
+function jump($s){
+	header('Location:'.SITE_URL.$s);
+	exit;
+}
 
 
 /*$conninfo = array(

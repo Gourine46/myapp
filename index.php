@@ -38,7 +38,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <div class="hero-unit">
         <h1>Goal Planet　α.ver</h1>
         <h2>目標×期限×記録=∞</h2>
-        <h3>サインイン</h3>
+        <h3>Facebookでサインイン</h3>
+        <div>
+        	<p><a href="redirect.php"><img src="img/Facebook.png" alt="Facebookでログイン"></a></p>
+        </div>
         <div>
         	<form id = "button1" action = "index.php" method = "POST">
             <label>ID</label>
