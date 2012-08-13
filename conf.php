@@ -20,6 +20,8 @@ $conninfo = array(
 	'password' => 'togattti'
 );//ロリポDB接続情報
 
+$mailinfo = array("from" => "2013sufla@gmail.com",
+					"to" => "kenta.togasi@gmail.com");
 /*$conninfo = array(
 	'host' => 'localhost',
 	'dbname' => 'db0togattti',

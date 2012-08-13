@@ -9,8 +9,7 @@ $obj = new operationDb($conninfo);
 $result = mysql_query("SELECT * FROM ".TABLE_CONTENT." order by adminId")
 or die(mysql_error());
 while($contents = mysql_fetch_array($result,MYSQL_ASSOC)){
-	$unix_now = time();
-	$unix_dead = time() + $contents["dueDay"]*24*60*60;
+
 	//if($unix_now > $unix_dead){
 		 $obj = new operationDb($conninfo);
 		 $obj->serachElement(TABLE_ADMIN,$contents["adminId"]);

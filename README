@@ -1,14 +1,14 @@
-css,img,js‚Ítwiiterbootstrap‚Ì‹@”\Šg’£—p
-class‚ÍDB‘€ì‚Ìˆê——‚Æƒ[ƒ‹‘—M
-conf.php‚Å‹¤’Êİ’èŠÇ—
+css,img,jsï¿½ï¿½twiiterbootstrapï¿½Ì‹@ï¿½\ï¿½gï¿½ï¿½ï¿½p
+classï¿½ï¿½DBï¿½ï¿½ï¿½ï¿½Ìˆê——ï¿½Æƒï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½M
+conf.phpï¿½Å‹ï¿½ï¿½Êİ’ï¿½Ç—ï¿½
 
-index.php‚æ‚èƒƒOƒCƒ“
+index.phpï¿½ï¿½èƒï¿½Oï¿½Cï¿½ï¿½
 
-ŠÇ—‰æ–Ê‚Íadmin,admin_edit 0302,kenken
+ï¿½Ç—ï¿½ï¿½ï¿½Ê‚ï¿½admin,admin_edit 0302,kenken
 
-test,index_html‚Í–³‹B
+test,index_htmlï¿½Í–ï¿½ï¿½ï¿½ï¿½B
 
-ƒ[ƒ‹‚Ì©“®‘—M‚ÍáŠ±‚Ìƒ^ƒCƒ€ƒ‰ƒO‚ª‚ ‚éB
+ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Mï¿½ÍáŠ±ï¿½Ìƒ^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 
 -----------------
 
@@ -17,3 +17,6 @@ git rm cached f
 
 
 git push 
+
+App ID:	218572684935212
+App Secret:	72ddd7176ed834c6db53d98f4c28c8a7
