@@ -5,7 +5,7 @@ $error_message = "名前,パスワード,e_mailアドレスの記入を完了さ
 $err = 0;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$name = !empty($_POST["name"]) ? $_POST["name"] : false;
-	$pass = !empty(($_POST["pass"]) ? $_POST["pass"] : false;
+	$pass = !empty($_POST["pass"]) ? $_POST["pass"] : false;
 	$e_mail = !empty($_POST["e_mail"]) ? $_POST["e_mail"] : false;
 	if(preg_match("/^[a-zA-Z0-9]+$/", $name) === false):$name = null;	 	
 	if(preg_match("/^[a-zA-Z0-9]+$/", $e_mail)  === false):$e_mail = null;	
@@ -26,7 +26,7 @@ if($mail == 1){
 $mail->mailUser($obj->row["e_mail"],$subject="登録が完了しました!!",$mail->mes1);
 }
 }
-}//REQUEST _METHOD
+//REQUEST _METHOD
 
 ?>
 

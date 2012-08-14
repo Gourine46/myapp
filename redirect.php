@@ -42,7 +42,7 @@ if(empty($_GET['code'])) {
 	$me = json_decode(file_get_contents($url),true);
 	//DBへ突っ込む
 	$obj = new operationDb($conninfo);
-	$q = sprintf("select * from users where facebook_user_id='%s' limit 1",$me);
+	$q = sprintf("select * from users where facebook_user_id='%s' limit 1",$me['id']);
 	$rs = mysql_query($q);
 	$user = mysql_fetch_assoc($rs);
 	
@@ -58,13 +58,13 @@ if(empty($_GET['code'])) {
 		$q = sprintf("select * from users where id=%d limit 1", mysql_insert_id());
 		$rs = mysql_query($q)or die(mysql_error());
 		$user = mysql_fetch_assoc($rs);
+			
 	}
 	//ログイン処理
 if(!empty($user)) {
 		session_regenerate_id(true);
 		$_SESSION['user'] = $user;
 	}
-	
 	jump("select.php");
 	//先へリダイレクト
 }

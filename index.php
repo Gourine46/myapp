@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Goal Planet　α.ver</h1>
-        <h2>目標×期限×記録=∞</h2>
+        <!-- <h2>目標×期限×記録=∞</h2> -->
         <h3>Facebookでサインイン</h3>
         <div>
         	<p><a href="redirect.php"><img src="img/Facebook.png" alt="Facebookでログイン"></a></p>
@@ -64,13 +64,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="span4">
           <h2>開発者</h2>
           <p>このアプリの開発者の簡単な紹介など.随時機能の拡張のお知らせなどもここでしていくので確認してみてください。</p>
-          <p><a class="btn" href="#">開発者 &raquo;</a></p>
+          <p><a class="btn" href="https://twitter.com/togattti">開発者 &raquo;</a></p>
         </div>
 	  	<!--このアプリの開発者の簡単な紹介など-->
 	  	<div class="span4">
         <h2>問い合わせ</h2>
            <p>何かこのアプリに関する質問があればここから受け付けています。 アドバイスや要望なども待っています。</p>
-          <p><a class="btn" href="#">問い合わせ &raquo;</a></p>
+          <p><a class="btn" href="https://twitter.com/togattti">問い合わせ &raquo;</a></p>
        </div> 
 	  <!--何かこのアプリに関する質問があればここから受け付けています。-->
     <div id="footer">

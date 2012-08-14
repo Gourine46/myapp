@@ -23,9 +23,10 @@ $conninfo = array(
 $mailinfo = array("from" => "2013sufla@gmail.com",
 					"to" => "kenta.togasi@gmail.com");
 
-/*function h($s){
+function h($s){
 	return htmlspecialchars($s);
 }
+/*
 function r($s){
 	return mysql_real_escape_string($s);
 }
