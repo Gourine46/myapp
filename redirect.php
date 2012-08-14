@@ -64,6 +64,8 @@ if(!empty($user)) {
 		session_regenerate_id(true);
 		$_SESSION['user'] = $user;
 	}
-	jump("");
+	
+	jump("select.php");
 	//先へリダイレクト
 }
+
