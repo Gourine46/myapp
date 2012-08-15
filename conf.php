@@ -2,11 +2,8 @@
 /* 共通設定ファイル
  * */
 header('Content-Type: text/html; charset:utf-8');
-define('APP_ID','218572684935212');//facebook
-define('APP_SECRET','72ddd7176ed834c6db53d98f4c28c8a7');//facebook
-
-define('CON_KEY','7Co6zWYwWhM5GGMaIPgDgw');//twitter
-define('CON_SECRET','ztx5Scz13vu7uyddzXy9vOxJekYhwNb7Qka7CYK9hMk');//twitter
+define('APP_ID','218572684935212');
+define('APP_SECRET','72ddd7176ed834c6db53d98f4c28c8a7');
 define('DEV_Ver',"myapp");//本番を使うときはここをmyappに指定して、ロリポップのdev1.myapp/の中に更新。
 define('SITE_URL', 'http://togattti.lolipop.jp/'.DEV_Ver.'/');
 error_reporting(E_ALL & ~E_NOTICE);
