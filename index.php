@@ -13,10 +13,10 @@ $outpass = $obj->outpass;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 	if($name == $outname && $pass == $outpass && !empty($name) ){
 		$_SESSION["name"] = $name;
-		header("Location:select.php");
+		jump("select.php");
 	
 	}elseif($name == ADMIN_ID && $pass == ADMIN_PASS){
-		header("Location:admin.php");
+		jump("admin.php");
 	
 	}
 		$error_message= "IDもしくはパスワード、また両方が入力されていません";
