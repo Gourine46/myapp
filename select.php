@@ -1,8 +1,9 @@
 <?php
 session_start();
-if(empty($_SESSION['user'])&&empty($_SESSION['name'])){
+if(empty($_SESSION['user'])&&empty($_SESSION['twiiter_user'])&&empty($_SESSION['name'])){
 	jump("");
 }
+
 $login_user = (!empty($_SESSION['user']))?$_SESSION['user']['facebook_name']:$_SESSION["name"];
 ?>
 <!DOCTYPE html>
