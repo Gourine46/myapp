@@ -1,19 +1,31 @@
 <?php
-/*
-$dead_day = date("Y-m-d",time()+($due_day * 24 * 60 * 60));//設定日時
-$now = time();
-classに入れる。
-contentsの中のすべてのユーザに対して、
-ユーザの名前とduedayをget.
-$nowと$deadayを　unixタイムに変換して
-if($now > $deadday){
-	mailアドレスを取得。
-	mailを送信する。
-}
-別のファイルで出力させる。
-*/
-require_once("class/member_db_class");
+$self = $_SERVER["SCRIPT_NAME"];
+$e_mail = $_POST["e_mail"];
+$name = $_POST["name"];
+$pass = $_POST["pass"];
 
-$obj = new operationDb();
+$array = ["id"]["e_mail"];
 
-$obj->searchAll(TABLE_CONTENT);
+$array = array("id" => array("e_mail" => ""));
+
+//idを取り出す。
+
+$content = array("id" => array("e_mail" => "","pass" => ""));
+
+
+
+?>
+
+<html>
+<head>
+</head>
+<body>
+<h1>テスト</h1>
+<?php var_dump($array);?>
+<form action = "<?phpecho $self ?> method="post"/>
+<input type="text" name="e_mail">
+<input type="text" name="name">
+<input type="text" name="pass">
+<input type="submit" value="送信">
+</body>
+</html>

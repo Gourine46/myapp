@@ -26,7 +26,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")$obj->deleteDb($table,$inName);$res=1;
 	<?php while($row = mysql_fetch_array($result,MYSQL_ASSOC)){
 	echo"<tr><td>id:".$row['id']."</td><td>name:".$row['name']."</td><td>pass:".$row['pass']."</td><td>email:".$row['e_mail']."</td>";
 	echo"<td><form method='post' action='mail_template.php'><input type='submit' value='確認メールを送信' name='mail_user'class='btn'>";
-	echo"<input type='hidden' name='id' value='{$row['id']}'></form></td></tr>";
+	echo"<input type='hidden' name='id' value='{$row['id']}'></td></form>";
+	echo"<td><input type='submit' value='削除する' name='delete' class='btn'/></td></tr>";
 	}
 	?>
 		</table>

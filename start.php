@@ -1,14 +1,12 @@
 <?php
 require_once("class/member_db_class.php");
 session_start();
+if(empty($_SESSION))jump("");
 $date = date("Y-m-d",time());
-$name=$_SESSION["name"];
+$name = (isset($_SESSION["user"]["facebook_name"]))?$_SESSION['user']['facebook_name']:$_SESSION['name'];
 $obj = new operationDb($conninfo);
 $obj->serachElement(TABLE_CONTENT,$name);
-$goal = $obj->row["goal"];
-$firstAction = $obj->row["firstAction"];
-$due_day = $obj->row["dueDay"];
-$dead_day = date("Y-m-d",time()+($due_day * 24 * 60 * 60));
+$dead_day = date("Y-m-d",time()+($obj->row["dueDay"] * 24 * 60 * 60));
 
 
 ?>
@@ -45,8 +43,8 @@ $dead_day = date("Y-m-d",time()+($due_day * 24 * 60 * 60));
 		</form>
 			<?php else: ?>
 				<h2>while you challenge <?php echo $_SESSION["name"];?></h2>
-				<label>目標</label><?php echo $goal ?>
-			<label>そのために今すぐやること</label><?php echo $firstAction ?>
+				<label>目標</label><?php echo $obj->row["goal"] ?>
+			<label>そのために今すぐやること</label><?php echo $obj->row["firstAction"]; ?>
 			<label>期限</label><?php echo $dead_day ?><div>21:00時点</div>
 			<p>一度に設定できる目標は一人一つまでです。</p>
 			<p>目標を決め直すときはここで一度消してから、再サインインしてください。</p>

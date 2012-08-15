@@ -2,23 +2,26 @@
 require_once("class/member_db_class.php");
 session_cache_limiter('private_no_expire');
 session_start();
-$name = $_SESSION["name"];
+if(empty($_SESSION))jump("");
+$name = (isset($_SESSION["user"]["facebook_name"]))?$_SESSION['user']['facebook_name']:$_SESSION['name'];
 $goal = $_POST['goal'];
 $firstAction = $_POST['firstAction'];
 $due_day = $_POST['due_day'];
 
 $obj = new operationDb($conninfo);
-if(isset($_POST["use"]))$obj->saveContentDb($name,$goal,$firstAction,$due_day);
-$obj = new operationDb($conninfo);
-$obj->serachElement(TABLE_CONTENT, $name);
-$save_data = $obj->row;
 
-if(isset($_POST["reset"])){
+	if(isset($_POST["use"]))$obj->saveContentDb($name,$goal,$firstAction,$due_day);
+	
 	$obj = new operationDb($conninfo);
-	$obj->deleteDb(TABLE_CONTENT,$name);
-	$obj->res = 1;
-	header("Location:select.php");
-}
+	$obj->serachElement(TABLE_CONTENT, $name);
+	$save_data = $obj->row;
+	if(isset($_POST["reset"])){
+		$obj = new operationDb($conninfo);
+		$obj->deleteDb(TABLE_CONTENT,$name);
+		$obj->res = 1;
+			if(isset($_SESSION['user']['facebook_name']))jump("facebook_message.php");exit;
+			jump("select.php");
+	}
 
 
 
