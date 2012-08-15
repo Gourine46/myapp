@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(empty($_SESSION['user'])&&empty($_SESSION['twiiter_user'])&&empty($_SESSION['name'])){
+if(empty($_SESSION['user'])&&empty($_SESSION['twitter_user'])&&empty($_SESSION['name'])){
 	jump("");
 }
 
@@ -15,8 +15,11 @@ $login_user = (!empty($_SESSION['user']))?$_SESSION['user']['facebook_name']:$_S
 	</head>
 	<body>
 				<?php if(isset($_SESSION['user'])):?>
-				<p><img src="<?php echo $_SESSION['user']['facebook_picture'];?>">
-				<?php echo $_SESSION['user']['facebook_name'];?>のFacebookでログインしています</p>
+					<p><img src="<?php echo $_SESSION['user']['facebook_picture'];?>">
+					<?php echo $_SESSION['user']['facebook_name'];?>のFacebookでログインしています</p>
+				<?php elseif(isset($_SESSION['twitter_user'])):?>
+					<p><img src="<?php echo $_SESSION['twitter_user']['twitter_profile_image_url'];?>">
+					<?php echo $_SESSION['twitter_user']['twitter_screen_name'];?>のTwitterでログインしています</p>
 				<?php endif;?>
 				<h1>ここは <?php echo $login_user;  ?>さんのページです。</h1>
 		<ul>

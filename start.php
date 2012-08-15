@@ -23,7 +23,7 @@ $dead_day = date("Y-m-d",time()+($obj->row["dueDay"] * 24 * 60 * 60));
 	<body>
 		<div></div>
 		<h1><span id="midasi">Goal Planet</span></h1>
-		<a href="index.php">ログアウト</a>
+		<a href="logout.php">ログアウト</a>
 		<h2>next step for <?php echo $_SESSION["name"];?></h2>
 		<form action="start2.php" method="post">
 			<?php echo$date;?>
