@@ -62,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="span4">
           <h2>サインアップ</h2>
            <p>このアプリを使うためにはサインインする必要があります。ここで登録した名前とパスワードでそのままサインインすることができます。</p>
-          <p><a class="btn" href="signin.php">サインアップ &raquo;</a></p>
+          <p><a class="btn" href="signin/">サインアップ &raquo;</a></p>
         </div>
          <!--このアプリを使うためにはログインする必要があります。ここで登録した名前とパスワードでそのままサインインすることができます。-->
         <div class="span4">
