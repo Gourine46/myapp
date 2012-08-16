@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <!-- <h2>目標×期限×記録=∞</h2> -->
         	<div>
         		<h3>Facebookでサインイン</h3>
-        		<a href="redirect.php"><img src="img/Facebook.png" alt="Facebookでログイン"></a>
+        		<a href="facebook/redirect.php"><img src="img/Facebook.png" alt="Facebookでログイン"></a>
         	</div>
         	<div>
         		<h3>Twitterでサインイン</h3>

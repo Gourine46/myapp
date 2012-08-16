@@ -1,5 +1,5 @@
 <?php
-require_once("class/member_db_class.php");
+require_once("../class/member_db_class.php");
 session_start();
 if(empty($_GET['code'])) {
 	//認証前の処理
@@ -8,7 +8,7 @@ if(empty($_GET['code'])) {
 	
 	$params = array(
 		'client_id' => APP_ID,
-		'redirect_uri' => SITE_URL.'redirect.php',
+		'redirect_uri' => SITE_URL.'facebook/redirect.php',
 		'state' => $_SESSION['state'],
 		'scope' => 'email,user_hometown,publish_stream'
 	);
@@ -30,7 +30,7 @@ if(empty($_GET['code'])) {
 		'client_id' => APP_ID,
 		'client_secret' => APP_SECRET,
 		'code' => $_GET['code'],
-		'redirect_uri' => SITE_URL.'redirect.php'
+		'redirect_uri' => SITE_URL.'facebook/redirect.php'
 	);
 	
 	$url = 'https://graph.facebook.com/oauth/access_token?'.http_build_query($params);
