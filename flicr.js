@@ -1,0 +1,12 @@
+$(function(){
+	$.ajax({
+		type:'GET',
+		url:'http://www.flickr.com/services/rest',
+		data:{
+			format:'json',
+			method:'flickr.photos.serach',//必須実行メソッド名
+			api_key:'f978b53365ff27ca17c4a9497b2941d5',
+			user_id:''
+		}
+	})
+}

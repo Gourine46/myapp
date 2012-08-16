@@ -68,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="span4">
           <h2>開発者</h2>
           <p>このアプリの開発者の簡単な紹介など.随時機能の拡張のお知らせなどもここでしていくので確認してみてください。</p>
-          <p><a class="btn" href="me.php">開発者 &raquo;</a></p>
+          <p><a class="btn" href="me/">開発者 &raquo;</a></p>
         </div>
 	  	<!--このアプリの開発者の簡単な紹介など-->
 	  	<div class="span4">
