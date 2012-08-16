@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         	</div>
         	<div>
         		<h3>Twitterでサインイン</h3>
-        		<a href="twitter_redirect.php"><img src="img/Twitter.png" alt="Twitterでログイン"></a>
+        		<a href="twitter/twitter_redirect.php"><img src="img/Twitter.png" alt="Twitterでログイン"></a>
         	</div>
         <div>
         	<form id = "button1" action = "index.php" method = "POST">

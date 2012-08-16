@@ -19,15 +19,11 @@ $due_day = $_POST['due_day'];
 		$obj = new operationDb($conninfo);
 		$obj->deleteDb(TABLE_CONTENT,$login_user_name);
 		$obj->res = 1;
-			if(isset($_SESSION['user']['facebook_name']))jump("facebook_message.php");exit;
-			elseif(isset($_SESSION['twitter_user']['twitter_screen_name']))jump("twitter_message.php");exit;
-			elseif($_SESSION['name'])jump("note.php");
+		if(isset($_SESSION['user']['facebook_name'])): jump("facebook_message.php");
+		elseif(isset($_SESSION['name'])): jump("note.php");
+		elseif(isset($_SESSION['twitter_user']['twitter_screen_name'])):jump("twitter/twitter_message.php");
+		endif;
 	}
-
-
-
-
-
 ?>
 <html>
 	<head>

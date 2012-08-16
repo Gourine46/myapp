@@ -24,26 +24,5 @@ index.phpよりログインしてください。
 
 ・履歴　7/21:α版を公開しました。
 =======
-css,img,js��twiiterbootstrap�̋@�\�g���p
-class��DB����̈ꗗ�ƃ��[�����M
-conf.php�ŋ��ʐݒ�Ǘ�
 
-index.php��胍�O�C��
-
-�Ǘ���ʂ�admin,admin_edit 0302,kenken
-
-test,index_html�͖����B
-
-���[���̎������M�͎኱�̃^�C�����O������B
-
------------------
-
-git rm f
-git rm cached f
-
-
-git push 
-
-App ID:	218572684935212
-App Secret:	72ddd7176ed834c6db53d98f4c28c8a7
 >>>>>>> create_dev1.myapp
