@@ -2,25 +2,26 @@
 require_once("class/member_db_class.php");
 session_cache_limiter('private_no_expire');
 session_start();
-if(empty($_SESSION))jump("");
-$name = (isset($_SESSION["user"]["facebook_name"]))?$_SESSION['user']['facebook_name']:$_SESSION['name'];
+if(isset($_SESSION['name']))$login_user_name = $_SESSION['name'];//一般ログイン
+elseif(isset($_SESSION['user']))$login_user_name = $_SESSION['user']['facebook_name'];
+elseif(isset($_SESSION['twitter_user']['twitter_screen_name']))$login_user_name = $_SESSION['twitter_user']['twitter_screen_name'];
+elseif(empty($_SESSION))jump('');
 $goal = $_POST['goal'];
 $firstAction = $_POST['firstAction'];
 $due_day = $_POST['due_day'];
 
-$obj = new operationDb($conninfo);
-
-	if(isset($_POST["use"]))$obj->saveContentDb($name,$goal,$firstAction,$due_day);
-	
 	$obj = new operationDb($conninfo);
-	$obj->serachElement(TABLE_CONTENT, $name);
+	if(isset($_POST["use"]))$obj->saveContentDb($login_user_name,$goal,$firstAction,$due_day);
+	$obj = new operationDb($conninfo);
+	$obj->serachElement(TABLE_CONTENT, $login_user_name);
 	$save_data = $obj->row;
 	if(isset($_POST["reset"])){
 		$obj = new operationDb($conninfo);
-		$obj->deleteDb(TABLE_CONTENT,$name);
+		$obj->deleteDb(TABLE_CONTENT,$login_user_name);
 		$obj->res = 1;
 			if(isset($_SESSION['user']['facebook_name']))jump("facebook_message.php");exit;
-			jump("select.php");
+			elseif(isset($_SESSION['twitter_user']['twitter_screen_name']))jump("twitter_message.php");exit;
+			elseif($_SESSION['name'])jump("note.php");
 	}
 
 
@@ -38,7 +39,7 @@ $obj = new operationDb($conninfo);
 	</head>
 	<body>
 		
-		<?php echo $name?>さん
+		<?php echo $login_user_name?>さん
 		<p>目標:<?php echo $save_data['goal']; ?></p>
 		<p>いますぐやるべきこと:<?php echo $save_data['firstAction']; ?></p>
 		<p>期限:<?php echo $save_data['dueDay']; ?> 日後の21:00時点</p>

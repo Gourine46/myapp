@@ -1,11 +1,13 @@
 <?php
 require_once("class/member_db_class.php");
 session_start();
-if(empty($_SESSION))jump("");
+if(isset($_SESSION['name']))$login_user_name = $_SESSION['name'];//一般ログイン
+elseif(isset($_SESSION['user']))$login_user_name = $_SESSION['user']['facebook_name'];
+elseif(isset($_SESSION['twitter_user']['twitter_screen_name']))$login_user_name = $_SESSION['twitter_user']['twitter_screen_name'];
+elseif(empty($_SESSION))jump('');
 $date = date("Y-m-d",time());
-$name = (isset($_SESSION["user"]["facebook_name"]))?$_SESSION['user']['facebook_name']:$_SESSION['name'];
 $obj = new operationDb($conninfo);
-$obj->serachElement(TABLE_CONTENT,$name);
+$obj->serachElement(TABLE_CONTENT,$login_user_name);
 $dead_day = date("Y-m-d",time()+($obj->row["dueDay"] * 24 * 60 * 60));
 
 
@@ -24,7 +26,7 @@ $dead_day = date("Y-m-d",time()+($obj->row["dueDay"] * 24 * 60 * 60));
 		<div></div>
 		<h1><span id="midasi">Goal Planet</span></h1>
 		<a href="logout.php">ログアウト</a>
-		<h2>next step for <?php echo $_SESSION["name"];?></h2>
+		<h2>next step for <?php echo $login_user_name;?></h2>
 		<form action="start2.php" method="post">
 			<?php echo$date;?>
 			<?php if(!$obj->res == 1): ?>
@@ -42,7 +44,7 @@ $dead_day = date("Y-m-d",time()+($obj->row["dueDay"] * 24 * 60 * 60));
 			<input type='hidden' name='use' value="確認ページへ">
 		</form>
 			<?php else: ?>
-				<h2>while you challenge <?php echo $_SESSION["name"];?></h2>
+				<h2>while you challenge <?php echo $login_user_name;?></h2>
 				<label>目標</label><?php echo $obj->row["goal"] ?>
 			<label>そのために今すぐやること</label><?php echo $obj->row["firstAction"]; ?>
 			<label>期限</label><?php echo $dead_day ?><div>21:00時点</div>
