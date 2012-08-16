@@ -10,4 +10,4 @@ $access_token = $_SESSION['user']['facebook_access_token'];
 $message = 'おめでとうございます！GoalPlanetで目標達成しました。スルーでお願いします。GoalPlanet制作者より';
 $facebook = new Facebook(array());
 $facebook->api('/' . $id . '/feed/', 'POST', array('access_token' => $access_token, 'message' => $message));
-jump("note.php");
+jump("user/4/");

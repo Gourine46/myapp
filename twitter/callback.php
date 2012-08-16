@@ -40,5 +40,5 @@ if(empty($twitter_user)){
 session_regenerate_id(true);
 $_SESSION['twitter_user'] = $twitter_user;
 
-jump("select.php");
+jump("user/1/");
 exit;

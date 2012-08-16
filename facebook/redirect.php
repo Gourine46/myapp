@@ -66,18 +66,11 @@ if(!empty($user)) {
 		session_regenerate_id(true);
 		$_SESSION['user'] = $user;
 	}
-	jump("select.php");
+	jump("user/1/");
 	//先へリダイレクト
 }
 /*
 目標達成できた場合facebookに投稿するようにする。
 facebook_message.php
-
-
-
-動作確認。
-
-新田さんにメール。
-中田さんにわからない箇所についての質問項目を作成する。
 */
 

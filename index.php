@@ -13,7 +13,7 @@ $outpass = $obj->outpass;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 	if($name == $outname && $pass == $outpass && !empty($name) ){
 		$_SESSION["name"] = $name;
-		jump("select.php");
+		jump("user/1/");
 	
 	}elseif($name == ADMIN_ID && $pass == ADMIN_PASS){
 		jump("admin/");
