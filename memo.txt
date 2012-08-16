@@ -6,3 +6,8 @@ twiiter連携により、得た情報をアプリすべてに反映させてい�
 履歴ページを作成。
 
 自己紹介ページを作成。
+
+テストtwitterアカウント
+testaccount
+shareee.test@gmail.com
+tester0302

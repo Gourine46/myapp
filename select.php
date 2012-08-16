@@ -1,10 +1,12 @@
 <?php
 session_start();
-if(empty($_SESSION['user'])&&empty($_SESSION['twitter_user'])&&empty($_SESSION['name'])){
-	jump("");
-}
 
-$login_user = (!empty($_SESSION['user']))?$_SESSION['user']['facebook_name']:$_SESSION["name"];
+if(isset($_SESSION['name']))$login_user_name = $_SESSION['name'];
+elseif(isset($_SESSION['user']))$login_user_name = $_SESSION['user']['facebook_name'];
+elseif(isset($_SESSION['twitter_user']['twitter_screen_name']))$login_user_name = $_SESSION['twitter_user']['twitter_screen_name'];
+elseif(empty($_SESSION))jump('');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -16,12 +18,12 @@ $login_user = (!empty($_SESSION['user']))?$_SESSION['user']['facebook_name']:$_S
 	<body>
 				<?php if(isset($_SESSION['user'])):?>
 					<p><img src="<?php echo $_SESSION['user']['facebook_picture'];?>">
-					<?php echo $_SESSION['user']['facebook_name'];?>のFacebookでログインしています</p>
+					<?php echo $login_user_name;?>のFacebookでログインしています</p>
 				<?php elseif(isset($_SESSION['twitter_user'])):?>
 					<p><img src="<?php echo $_SESSION['twitter_user']['twitter_profile_image_url'];?>">
-					<?php echo $_SESSION['twitter_user']['twitter_screen_name'];?>のTwitterでログインしています</p>
+					<?php echo $login_user_name;?>のTwitterでログインしています</p>
 				<?php endif;?>
-				<h1>ここは <?php echo $login_user;  ?>さんのページです。</h1>
+				<h1>ここは <?php echo $login_user_name;  ?>さんのページです。</h1>
 		<ul>
 			<li><a href="./start.php">Goal Planetを使う</a></li>
 			<li>履歴</li>
