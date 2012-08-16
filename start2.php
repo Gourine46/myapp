@@ -34,7 +34,6 @@ $due_day = $_POST['due_day'];
 		<link rel="stylesheet" type="text/css" href="start.css">
 	</head>
 	<body>
-		
 		<?php echo $login_user_name?>さん
 		<p>目標:<?php echo $save_data['goal']; ?></p>
 		<p>いますぐやるべきこと:<?php echo $save_data['firstAction']; ?></p>
