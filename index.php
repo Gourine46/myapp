@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		jump("select.php");
 	
 	}elseif($name == ADMIN_ID && $pass == ADMIN_PASS){
-		jump("admin.php");
+		jump("admin/");
 	
 	}
 		$error_message= "IDもしくはパスワード、また両方が入力されていません";
