@@ -1,15 +1,15 @@
 <<<<<<< HEAD
 【制作物】GoalPlanet
-【URL】<a href="http://togattti.lolipop.jp/myapp/">http://togattti.lolipop.jp/myapp/</a>
+【URL】http://togattti.lolipop.jp/myapp/
 【著作権者】@togattti(twiiterで...)
 【制作日】6/20~現在
-【連絡先】<a href="https://twitter.com/togattti">@togattti</a>
+【連絡先】https://twitter.com/togattti
 【開発環境】
 　　MacOS,Appache,MySQL5,PHP5
 ―――――――――――――――――――――――――――――――――――――
 ≪著作権および免責事項≫
 著作権は作者
-である"<a href ="https://twitter.com/togattti" >@togattti</a> "が保有しています。
+である https://twitter.com/togattti が保有しています。
 
 ・はじめに
 <div>任意の目標を達成するために利用するTodo管理ツール</div>
@@ -23,6 +23,6 @@ conf.phpで共通設定を行っています。
 index.phpよりログインしてください。
 
 ・履歴　7/21:α版を公開しました。
-=======
+・8/14:facebookログイン機能実装しました。
 
 >>>>>>> create_dev1.myapp
