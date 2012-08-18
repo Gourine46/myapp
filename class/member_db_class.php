@@ -30,7 +30,6 @@
 class operationDb{
 	public $connect;//クラス自身のmysql_connect(,,,)を格納
 	public $inname;//会員登録用の名前
-	
 	public function __construct($conninfo){
 		$this->connect = mysql_connect($conninfo['host'],$conninfo['user'],$conninfo['password'])
 		//or die("mysql connect failed!");
@@ -41,14 +40,14 @@ class operationDb{
 		or die(mysql_error());
 	}
 	
-	public function saveIdPassDb($inname,$inpass,$in_e_mail){
-		$sql = "INSERT INTO ".TABLE_ADMIN."(name,pass,e_mail) VALUES('$inname','$inpass','$in_e_mail')";
+	public function saveIdPassDb($contents_id,$inname,$inpass,$in_e_mail){
+		$sql = "INSERT INTO ".TABLE_ADMIN."(contents_id,name,pass,e_mail) VALUES('$contents_id','$inname','$inpass','$in_e_mail')";
 		mysql_query($sql,$this->connect)or die(mysql_error());
 		mysql_close($this->connect);
 	}
 	//上のやつと後で統合する。
-	public function saveContentDb($name,$goal,$firstAction,$dueDay){//ログイン時の名前と目標、期限
-		$sql = "INSERT INTO ".TABLE_CONTENT." (adminId,goal,firstAction,dueday) VALUES('$name','$goal','$firstAction','$dueDay')";
+	public function saveContentDb($name,$goal,$dueDay,$contents_id){//ログイン時の名前と目標、期限
+		$sql = "INSERT INTO ".TABLE_CONTENT." (adminId,goal,dueday,contents_id) VALUES('$name','$goal','$dueDay','$contents_id')";
 		mysql_query($sql,$this->connect)or die(mysql_error());
 		mysql_close($this->connect);
 	}
@@ -67,12 +66,9 @@ class operationDb{
 		$sql = mysql_query("SELECT * FROM ".TABLE_ADMIN." order by id")
 		or die(mysql_error());
 		while($row = mysql_fetch_array($sql,MYSQL_ASSOC)){
-				
 			if($name == $row["name"]){
-		$this->outname = $row["name"];
-		$this->outpass = $row["pass"];
+		$this->row = $row;
 		return $res = true; 
-		
 	}
 		}
 	}

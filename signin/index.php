@@ -13,22 +13,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	elseif(preg_match("/^[a-zA-Z0-9]+$/", $e_mail)  === false　|| empty($e_mail)):$err = 1;	
 	endif;
 
-if(isset($name) && isset($pass) && isset($e_mail) && $err == 0){
-$obj=new operationDb($conninfo);
-$name=$obj->format($name);
-$pass=$obj->format($pass);
-$e_mail=$obj->format($e_mail);
-$obj->saveIdPassDb($name,$pass,$e_mail);
-$result = "登録完了しました。<a href='index.php'>トップ画面からログインしてください</a>";
-$res=true;
-/*データを取り出して、メールテンプレートにのせて、mailuserを起動して終わり。*/
-$obj = new operationDb($conninfo);
-$obj->serachElement(TABLE_ADMIN,$name);
-$mail = new MailUse();
-if($mail == 1){
-$mail->mailUser($obj->row["e_mail"],$mail->subject,$mail->mes1);
-}
-}
+	if(isset($name) && isset($pass) && isset($e_mail) && $err == 0){
+		$contents_id = get_contents_id();
+		$obj=new operationDb($conninfo);
+		$obj->saveIdPassDb($contents_id,$name,$pass,$e_mail);
+		$result = "登録完了しました。<a href='index.php'>トップ画面からログインしてください</a>";
+		$res=true;
+		/*データを取り出して、メールテンプレートにのせて、mailuserを起動して終わり。*/
+		$obj = new operationDb($conninfo);
+		$obj->serachElement(TABLE_ADMIN,$name);
+		$mail = new MailUse();
+	if($mail == 1){
+		$mail->mailUser($obj->row["e_mail"],$mail->subject,$mail->mes1);
+	}
+	}
 }//REQUEST _METHOD
 
 ?>

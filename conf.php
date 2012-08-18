@@ -40,6 +40,16 @@ function jump($s){
 	exit;
 }
 
+function get_contents_id(){
+srand((double) microtime() * 1000000);
+for ($i = 1; $i <= 8; $i++) {
+$rs = rand(0, 8);
+$a = substr('123456789', $rs, 1);
+$id .= $a;
+}
+return $id;
+}
+
 
 /*$conninfo = array(
 	'host' => 'localhost',
@@ -49,13 +59,3 @@ function jump($s){
 );//ローカルDB接続情報
 */
 
-
-//githubにあげる。
-//サーバー環境
-//自動送信機能
-//定時スクリプト実行cron
-//ローカル.
-
-//利用者が毎日の利用。何個かタスクを複数設定。
-//時間配分。一時間おきにアラートだす。相手のデスク上で、、、
-//javascript 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['name']))$login_user_name = $_SESSION['name'];
+if(isset($_SESSION["row"]['name']))$login_user_name = $_SESSION["row"]['name'];
 elseif(isset($_SESSION['user']))$login_user_name = $_SESSION['user']['facebook_name'];
 elseif(isset($_SESSION['twitter_user']['twitter_screen_name']))$login_user_name = $_SESSION['twitter_user']['twitter_screen_name'];
 elseif(empty($_SESSION))jump('');

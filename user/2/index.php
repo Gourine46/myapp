@@ -1,7 +1,7 @@
 <?php
 require_once("../../class/member_db_class.php");
 session_start();
-if(isset($_SESSION['name']))$login_user_name = $_SESSION['name'];//一般ログイン
+if(isset($_SESSION['row']['name']))$login_user_name = $_SESSION['row']['name'];//一般ログイン
 elseif(isset($_SESSION['user']))$login_user_name = $_SESSION['user']['facebook_name'];
 elseif(isset($_SESSION['twitter_user']['twitter_screen_name']))$login_user_name = $_SESSION['twitter_user']['twitter_screen_name'];
 elseif(empty($_SESSION))jump('');
@@ -29,8 +29,7 @@ $dead_day = date("Y-m-d",time()+($obj->row["dueDay"] * 24 * 60 * 60));
 		<form action="../3/" method="post">
 			<?php echo$date;?>
 			<?php if(!$obj->res == 1): ?>
-			<label>目標</label><input type="text" name="goal"　value = "">
-			<label>そのために今すぐやること</label><input type="text" name="firstAction"　value = "">
+			<label>todo</label><input type="text" name="goal"　value = "">
 			<label>期限</label>
 				 <select method="post" name="due_day">
 					<option value="1">1日</option>
@@ -45,7 +44,6 @@ $dead_day = date("Y-m-d",time()+($obj->row["dueDay"] * 24 * 60 * 60));
 			<?php else: ?>
 				<h2>while you challenge <?php echo $login_user_name;?></h2>
 				<label>目標</label><?php echo $obj->row["goal"] ?>
-			<label>そのために今すぐやること</label><?php echo $obj->row["firstAction"]; ?>
 			<label>期限</label><?php echo $dead_day ?><div>21:00時点</div>
 			<p>一度に設定できる目標は一人一つまでです。</p>
 			<p>目標を決め直すときはここで一度消してから、再サインインしてください。</p>

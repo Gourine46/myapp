@@ -7,12 +7,11 @@ $name=$_POST["name"];
 $pass=$_POST["password"];
 $obj = new operationDb($conninfo);
 $obj->arrayDb($name);
-$outname = $obj->outname;
-$outpass = $obj->outpass;
-
+$p_name = $obj->row["name"];
+$p_pass = $obj->row["pass"];
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-	if($name == $outname && $pass == $outpass && !empty($name) ){
-		$_SESSION["name"] = $name;
+	if($name == $p_name && $pass == $p_pass && !empty($name) ){
+		$_SESSION["row"] = $obj->row;
 		jump("user/1/");
 	
 	}elseif($name == ADMIN_ID && $pass == ADMIN_PASS){
@@ -28,6 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="ja">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <META NAME="keywords" CONTENT="GoalPlanet,goalplanet,todo,Todo,togattti,togashi">
     <title>Goal Planet</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>

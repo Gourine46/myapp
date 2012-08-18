@@ -23,8 +23,10 @@ $twitter_user = mysql_fetch_assoc($rs);
 
 if(empty($twitter_user)){
 	//新しくユーザー情報を挿入
-	$q = sprintf("insert into twitter_users (twitter_user_id, twitter_screen_name, twitter_profile_image_url, twitter_access_token, twitter_access_token_secret, created, modified) 
-	values ('%s', '%s', '%s', '%s', '%s', now(), now());",
+	$contents_id = get_contents_id();
+	$q = sprintf("insert into twitter_users (contents_id,twitter_user_id, twitter_screen_name, twitter_profile_image_url, twitter_access_token, twitter_access_token_secret, created, modified) 
+	values ('%s','%s', '%s', '%s', '%s', '%s', now(), now());",
+		$contents_id,
 		$me->id_str,
 		$me->screen_name,
 		$me->profile_image_url,
