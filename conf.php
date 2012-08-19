@@ -13,6 +13,7 @@ session_set_cookie_params(0, '/'.DEV_Ver.'/');//セッションの有効範囲�
 define('ROOT_PATH', dirname(__FILE__)."/..");
 define('TABLE_ADMIN',"registration");//会員id,pass,mailなど
 define('TABLE_CONTENT',"contents");//会員が使うコンテンツ
+define('TABLE_HISTORY',"historys");//履歴用テーブル
 define('ADMIN_ID',"kenken");//管理画面用
 define('ADMIN_PASS',"0302");//..
 set_include_path(get_include_path().PATH_SEPARATOR.ROOT_PATH);//インクルードパス指定

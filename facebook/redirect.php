@@ -48,8 +48,10 @@ if(empty($_GET['code'])) {
 	$user = mysql_fetch_assoc($rs);
 	if(empty($user)){
 		//データを挿入
-		$q = sprintf("insert into users (facebook_user_id, facebook_name, facebook_picture, facebook_email, facebook_access_token, created, modified) values ('%s','%s','%s','%s','%s',now(),now());",
-            $me['id'],
+		$contents_id = get_contents_id();
+		$q = sprintf("insert into users (contents_id,facebook_user_id, facebook_name, facebook_picture, facebook_email, facebook_access_token, created, modified) values ('%s','%s','%s','%s','%s','%s',now(),now());",
+            $contents_id,
+			$me['id'],
             $me['name'],
             $me['picture']['data']['url'],
             $me['email'],

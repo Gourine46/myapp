@@ -47,8 +47,12 @@ class operationDb{
 	}
 	//上のやつと後で統合する。
 	public function saveContentDb($name,$goal,$dueDay,$contents_id){//ログイン時の名前と目標、期限
-		$sql = "INSERT INTO ".TABLE_CONTENT." (adminId,goal,dueday,contents_id) VALUES('$name','$goal','$dueDay','$contents_id')";
-		mysql_query($sql,$this->connect)or die(mysql_error());
+		$q = sprintf("insert into ".TABLE_CONTENT."(adminId,goal,dueDay,contents_id,created,modified) values ('%s','%s','%s','%s',now(),now())",
+			$name,$goal,$dueDay,$contents_id);
+		$q_history = sprintf("insert into ".TABLE_HISTORY."(adminId,goal,dueDay,contents_id,created,modified) values ('%s','%s','%s','%s',now(),now())",
+			$name,$goal,$dueDay,$contents_id);
+		mysql_query($q,$this->connect)or die(mysql_error());
+		mysql_query($q_history,$this->connect)or die(mysql_error());
 		mysql_close($this->connect);
 	}
 	//取得したデータをmysql格納用にするメソッド。

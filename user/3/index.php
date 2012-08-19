@@ -2,13 +2,21 @@
 require_once("../../class/member_db_class.php");
 session_cache_limiter('private_no_expire');
 session_start();
-if(isset($_SESSION['row']['name']))$login_user_name = $_SESSION['row']['name'];//一般ログイン
-elseif(isset($_SESSION['user']))$login_user_name = $_SESSION['user']['facebook_name'];
-elseif(isset($_SESSION['twitter_user']['twitter_screen_name']))$login_user_name = $_SESSION['twitter_user']['twitter_screen_name'];
-elseif(empty($_SESSION))jump('');
-$goal = $_POST['goal'];
-$due_day = $_POST['due_day'];
-$contents_id = ""//セッションから取得
+	if(isset($_SESSION['row']['name'])):
+		$login_user_name = $_SESSION['row']['name'];
+		$contents_id = $_SESSION['row']['contents_id'];//一般ログイン
+	elseif(isset($_SESSION['user'])):
+		$login_user_name = $_SESSION['user']['facebook_name'];
+		$contents_id = $_SESSION['user']['contents_id'];	
+	elseif(isset($_SESSION['twitter_user']['twitter_screen_name'])):
+		$login_user_name = $_SESSION['twitter_user']['twitter_screen_name'];
+		$contents_id = $_SESSION['twitter_user']['contents_id'];
+	elseif(empty($_SESSION)):
+		jump('');
+	endif;
+	
+	$goal = $_POST['goal'];
+	$due_day = $_POST['due_day'];
 	$obj = new operationDb($conninfo);
 	if(isset($_POST["use"]))$obj->saveContentDb($login_user_name,$goal,$due_day,$contents_id);//!!
 	$obj = new operationDb($conninfo);

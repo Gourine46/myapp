@@ -1,12 +1,36 @@
 <?php 
-/*
-一般ユーザだけに適用する。
+session_start();
+$rows = $_SESSION['rows'];
 
-履歴を保存するものはcsvなのかデータベースなのか。
+?>
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>
+			会員確認画面
+		</title>
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<h1><?php echo$rows[0]['adminId'] ?>の履歴一覧</h1>
+		<table>
+		<tr>
+			<th>todo</th>
+			<th>created</th>
+			<th>status</th>
+		</tr>
+		<?php foreach($rows as $row):?>
+		<tr>
+			<td><?php echo$row['goal']; ?></td>
+			<td><?php echo$row['created'];?></td>
+			<td><?php echo$row['type'];?></td>
+		</tr>
+		<?php endforeach; ?>
+		</table>
+		<a href ="./">←戻る</a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+</body>
+</html>
 
-
-形式としてはuserid.txtという形式のファイルを作成して、そこに履歴のデータを挿入していく。データは
-ユーザ情報を取得。
-
-
-*/
