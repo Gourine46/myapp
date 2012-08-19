@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$contents_id = get_contents_id();
 		$obj=new operationDb($conninfo);
 		$obj->saveIdPassDb($contents_id,$name,$pass,$e_mail);
-		$result = "登録完了しました。<a href='index.php'>トップ画面からログインしてください</a>";
+		$result = "登録完了しました。<a href='../'>トップ画面からログインしてください</a>";
 		$res=true;
 		/*データを取り出して、メールテンプレートにのせて、mailuserを起動して終わり。*/
 		$obj = new operationDb($conninfo);
