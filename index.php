@@ -1,26 +1,20 @@
 <?php
-
 require_once("class/member_db_class.php");
 session_start();
-
-$name=$_POST["name"];
-$pass=$_POST["password"];
-$obj = new operationDb($conninfo);
-$obj->arrayDb($name);
-$p_name = $obj->row["name"];
-$p_pass = $obj->row["pass"];
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-	if($name == $p_name && $pass == $p_pass && !empty($name) ){
-		$_SESSION["row"] = $obj->row;
-		jump("user/1/");
-	
-	}elseif($name == ADMIN_ID && $pass == ADMIN_PASS){
-		jump("admin/");
-	
+$db = new ExpandDataBase();
+$result = $db->LogInNormal($_POST['name'],$_POST['password']);
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+		if(is_array($result)){
+			$_SESSION["row"] = $result;
+			jump("user/1/");
+		}
+		elseif($result == "admin"){
+			jump("admin/");
+		}
+		elseif($result == "error"){
+			$error_message= "ID,パスワードに適切なデータが入力されていません";
+		}
 	}
-		$error_message= "IDもしくはパスワード、また両方が入力されていません";
-	
-}
 ?>
 
 <!DOCTYPE html>

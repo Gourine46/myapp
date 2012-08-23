@@ -30,13 +30,11 @@
 class operationDb{
 	public $connect;//クラス自身のmysql_connect(,,,)を格納
 	public $inname;//会員登録用の名前
-	public function __construct($conninfo){
-		$this->connect = mysql_connect($conninfo['host'],$conninfo['user'],$conninfo['password'])
-		//or die("mysql connect failed!");
-		//$this->connect = mysql_connect('mysql569.phy.lolipop.jp','LAA0185366','togattti')
+	public function __construct(){
+		$this->connect = mysql_connect(DB_HOST,DB_USER,DB_PASSWORD)
 		or die("mysql connect failed!");
 		mysql_query("SET CHARACTER SET utf8;");
-		mysql_select_db($conninfo['dbname'],$this->connect)
+		mysql_select_db(DB_NAME,$this->connect)
 		or die(mysql_error());
 	}
 	
@@ -126,3 +124,40 @@ class operationDb{
 	}//serachElement
 	
 }//class
+
+class ExpandDataBase extends operationDb{
+	function __construct()
+	{	parent::__construct();
+	}
+	public function LogInNormal($name,$pass){
+		/*twitter,facebook以外の普通のアカウントでのログイン処理
+		 * テーブルにデータが無ければ、falseを返す。
+		 * 有れば、$dataに該当配列データを入れて、返す。
+		 * */
+		//$name,$passのデータが有るかどうか
+		if(empty($name) || empty($pass))
+		{
+			$result ="error";
+			return $result;
+		}
+		//テーブル上に該当データが有るかどうか
+		$sql = "select * from ".TABLE_ADMIN." where name='".$name."' and pass='".$pass."'";
+		$rst = mysql_query($sql)or die(mysql_error());
+		if(!$rst)
+		{
+			$result ="error";	
+			return $result;
+		}
+		while($row = mysql_fetch_assoc($rst)){
+			$data = $row;
+		}
+		//for admin id&pass
+		if($name == ADMIN_ID && $pass == ADMIN_PASS)
+		{	
+			$result = "admin";
+			return $result;
+		}
+		//該当データを配列に格納
+		return $this->data = $data;
+	}//LogInNormal
+}

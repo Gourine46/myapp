@@ -242,6 +242,7 @@ abstract class BaseFacebook
    *
    * @param string $appId The Application ID
    * @return BaseFacebook
+   * 一度セットされれば、どこからでもappIdにアクセスすることができる。
    */
   public function setAppId($appId) {
     $this->appId = $appId;

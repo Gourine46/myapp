@@ -11,9 +11,11 @@ define('SITE_URL', 'http://togattti.lolipop.jp/'.DEV_Ver.'/');
 error_reporting(E_ALL & ~E_NOTICE);
 session_set_cookie_params(0, '/'.DEV_Ver.'/');//セッションの有効範囲を指定するお！
 define('ROOT_PATH', dirname(__FILE__)."/..");
-define('TABLE_ADMIN',"registration");//会員id,pass,mailなど
+define('TABLE_ADMIN',"registration");//一般会員id,pass,mailなど
 define('TABLE_CONTENT',"contents");//会員が使うコンテンツ
-define('TABLE_HISTORY',"historys");//履歴用テーブル
+define('TABLE_HISTORY',"historys");//全ユーザの履歴用テーブル
+define('TABLE_FACEBOOK',"users");//facebook用テーブル
+define('TABLE_TWITTER',"twitter_users");//twitter用テーブル
 define('ADMIN_ID',"kenken");//管理画面用
 define('ADMIN_PASS',"0302");//..
 set_include_path(get_include_path().PATH_SEPARATOR.ROOT_PATH);//インクルードパス指定
@@ -25,6 +27,10 @@ $conninfo = array(
 	'user' => 'LAA0185366',
 	'password' => 'togattti'
 );//ロリポDB接続情報
+define('DB_HOST','mysql569.phy.lolipop.jp');
+define('DB_NAME','LAA0185366-togattti');
+define('DB_USER','LAA0185366');
+define('DB_PASSWORD','togattti');
 $mailinfo = array("from" => "2013sufla@gmail.com",
 					"to" => "kenta.togasi@gmail.com");
 
