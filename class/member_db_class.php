@@ -41,7 +41,7 @@ class operationDb{
 	public function saveIdPassDb($contents_id,$inname,$inpass,$in_e_mail){
 		$sql = "INSERT INTO ".TABLE_ADMIN."(contents_id,name,pass,e_mail) VALUES('$contents_id','$inname','$inpass','$in_e_mail')";
 		mysql_query($sql,$this->connect)or die(mysql_error());
-		mysql_close($this->connect);
+		
 	}
 	//上のやつと後で統合する。
 	public function saveContentDb($name,$goal,$dueDay,$contents_id){//ログイン時の名前と目標、期限
@@ -51,7 +51,7 @@ class operationDb{
 			$name,$goal,$dueDay,$contents_id);
 		mysql_query($q,$this->connect)or die(mysql_error());
 		mysql_query($q_history,$this->connect)or die(mysql_error());
-		mysql_close($this->connect);
+		
 	}
 	//取得したデータをmysql格納用にするメソッド。
 	public function format($string){
@@ -85,7 +85,7 @@ class operationDb{
 		if($table == TABLE_ADMIN)$sql = "DELETE from ".TABLE_ADMIN." WHERE id ='$inName' ";
 		if($table == TABLE_CONTENT)$sql = "DELETE from ".TABLE_CONTENT." WHERE adminId ='$inName' ";
 		 mysql_query($sql,$this->connect);
-		 mysql_close($this->connect);
+		
 	}
 	
 

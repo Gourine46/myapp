@@ -1,7 +1,7 @@
 <?php
 require_once("../class/member_db_class.php");
 require_once("../class/error_check.class.php");
-require_once("../class/mail_user_class.php");//後でファイル着くってそこにリダイレクト処理させる。
+session_start();
 $obj = new ErrorCheck();
 $error_check = $obj->SignInErrorCheck($_POST['name'],$_POST['pass'],$_POST['pass2'],$_POST['e_mail']);
 $error_message = "";
@@ -15,17 +15,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$contents_id = get_contents_id();
 		$db=new ExpandDataBase();
 		$db->saveIdPassDb($contents_id,$_POST['name'],$_POST['pass'],$_POST['e_mail']);
-		$result = "登録完了しました。<a href='../'>トップ画面からログインしてください</a>";
-		$res=true;
-		$db = new ExpandDataBase();
-		$db->serachElement(TABLE_ADMIN,$_POST['name']);
-		$mail = new MailUse();
-	if($mail == 1){
-		$mail->mailUser($obj->row["e_mail"],$mail->subject,$mail->mes1);
-	}
+		$_SESSION['conf_mail'] = $_POST['e_mail'];
+		jump("signin/mail.php");
 	}
 }//REQUEST _METHOD
-
 ?>
 
 <html>
@@ -35,7 +28,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<title>サインアップ</title>
 	</head>
 	<body>
-		<div <?php if($res) echo"style='display:none;'";?>>
 		<h1>サインアップ</h1>
 		<div style="color:red;"><?php echo $error_message;?></div>
 		<form action="<?php echo$self; ?>"  method="post">
@@ -46,8 +38,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<input type="submit" name="conf" value="登録完了" class="btn">
 		</form>
 		<a href="../">←戻る</a>
-		</div><!--ここまで消えるぞ！ -->
-		<div style="color:red;"><?php echo $result;?></div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 	</body>
