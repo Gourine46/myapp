@@ -1,27 +1,24 @@
 <?php
 require_once("../class/member_db_class.php");
-require_once("../class/mail_user_class.php");
-$name = $_POST["name"];
-$pass = $_POST["pass"];
-$e_mail = $_POST["e_mail"];
-$error_message　= "名前,パスワード,e_mailアドレスの記入を完了させてください";
-$err = 0;
+require_once("../class/error_check.class.php");
+require_once("../class/mail_user_class.php");//後でファイル着くってそこにリダイレクト処理させる。
+$obj = new ErrorCheck();
+$error_check = $obj->SignInErrorCheck($_POST['name'],$_POST['pass'],$_POST['pass2'],$_POST['e_mail']);
+$error_message = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-	if(empty($pass)):$err = 1;	
-	elseif(preg_match("/^[a-zA-Z0-9]+$/", $name) === false　|| empty($name)):$err = 1; 	
-	elseif(preg_match("/^[a-zA-Z0-9]+$/", $e_mail)  === false　|| empty($e_mail)):$err = 1;	
-	endif;
-
-	if(isset($name) && isset($pass) && isset($e_mail) && $err == 0){
+	if($error_check === false)
+	{
+		$error_message = $obj->error_message;
+	}
+	elseif($error_check === true)
+	{
 		$contents_id = get_contents_id();
-		$obj=new operationDb($conninfo);
-		$obj->saveIdPassDb($contents_id,$name,$pass,$e_mail);
+		$db=new ExpandDataBase();
+		$db->saveIdPassDb($contents_id,$_POST['name'],$_POST['pass'],$_POST['e_mail']);
 		$result = "登録完了しました。<a href='../'>トップ画面からログインしてください</a>";
 		$res=true;
-		/*データを取り出して、メールテンプレートにのせて、mailuserを起動して終わり。*/
-		$obj = new operationDb($conninfo);
-		$obj->serachElement(TABLE_ADMIN,$name);
+		$db = new ExpandDataBase();
+		$db->serachElement(TABLE_ADMIN,$_POST['name']);
 		$mail = new MailUse();
 	if($mail == 1){
 		$mail->mailUser($obj->row["e_mail"],$mail->subject,$mail->mes1);
@@ -40,16 +37,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<body>
 		<div <?php if($res) echo"style='display:none;'";?>>
 		<h1>サインアップ</h1>
-		<div style="color:red;"><?php if($err == 1) echo $error_message; ?></div>
+		<div style="color:red;"><?php echo $error_message;?></div>
 		<form action="<?php echo$self; ?>"  method="post">
-			<p <?php if($err == 1)echo "style='color:red;'"?>><label>ID※(半角英数字でお願いします)</label><input type="text" name="name" value="<?php echo @$name; ?>"></p>
-			<p <?php if($err == 1)echo "style='color:red;'"?>><label>パスワード</label><input type="password" name="pass" value="<?php echo @$pass;?>"><p/>
-			<p <?php if($err == 1)echo "style='color:red;'"?>><label>パスワード(確認のためもう一度記入してください)</label><input type="password" name="pass2"></p>
-			<p <?php if($err == 1)echo "style='color:red;'"?>><label>e_mail</label><input type="text" name="e_mail" value="<?php echo @$e_mail;?>"></p>
+			<p><label>ID※(半角英数字でお願いします)</label><input type="text" name="name" value="<?php echo @$_POST['name']; ?>"></p>
+			<p><label>パスワード</label><input type="password" name="pass" value=""><p/>
+			<p><label>パスワード(確認のためもう一度記入してください)</label><input type="password" name="pass2"></p>
+			<p><label>e_mail</label><input type="text" name="e_mail" value="<?php echo @$_POST['e_mail'];?>"></p>
 			<input type="submit" name="conf" value="登録完了" class="btn">
 		</form>
 		<a href="../">←戻る</a>
-		</div>
+		</div><!--ここまで消えるぞ！ -->
 		<div style="color:red;"><?php echo $result;?></div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>

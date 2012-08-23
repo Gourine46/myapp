@@ -22,8 +22,7 @@ $dead_day = date("Y-m-d",time()+($obj->row["dueDay"] * 24 * 60 * 60));
 		<link href="../../css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
-		<div></div>
-		<h1><span id="midasi">Goal Planet</span></h1>
+		<h1>Goal Planet</h1>
 		<a href="../logout.php">ログアウト</a>
 		<h2>next step for <?php echo $login_user_name;?></h2>
 		<form action="../3/" method="post">
