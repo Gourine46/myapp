@@ -1,10 +1,9 @@
 <?php
-require_once("../class/member_db_class.php");
+require_once("../class/db.class.php");
 require_once("../class/error_check.class.php");
 session_start();
 $obj = new ErrorCheck();
 $error_check = $obj->SignInErrorCheck($_POST['name'],$_POST['pass'],$_POST['pass2'],$_POST['e_mail']);
-$error_message = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 	if($error_check === false)
 	{
@@ -16,11 +15,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$db=new ExpandDataBase();
 		$db->saveIdPassDb($contents_id,$_POST['name'],$_POST['pass'],$_POST['e_mail']);
 		$_SESSION['conf_mail'] = $_POST['e_mail'];
-		jump("signin/mail.php");
+		jump("");
 	}
 }//REQUEST _METHOD
 ?>
-
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

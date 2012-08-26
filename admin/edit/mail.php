@@ -1,5 +1,5 @@
 <?php
-require_once("../../class/member_db_class.php"); 
+require_once("../../class/db.class.php"); 
 require_once("../../class/mail_user_class.php"); 
 $uid = $_POST['id'];
 $obj = new operationDb($conninfo);

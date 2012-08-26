@@ -1,7 +1,6 @@
 <?php 
 session_start();
 $rows = $_SESSION['rows'];
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">

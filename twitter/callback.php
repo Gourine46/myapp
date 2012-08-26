@@ -1,6 +1,6 @@
 <?php
 //twitter認証後返ってくる。
-require_once('../class/member_db_class.php');
+require_once('../class/db.class.php');
 require_once('twitteroauth/twitteroauth.php');
 
 session_start();

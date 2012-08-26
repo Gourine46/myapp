@@ -1,5 +1,5 @@
 <?php
-require_once("../class/member_db_class.php");
+require_once("../class/db.class.php");
 session_start();
 if(empty($_GET['code'])) {
 	//認証前の処理

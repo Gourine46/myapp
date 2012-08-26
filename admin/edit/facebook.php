@@ -1,5 +1,5 @@
 <?php
-require_once("../../class/member_db_class.php");
+require_once("../../class/db.class.php");
 session_start();
 $obj = new operationDb($conninfo);
 	$result = mysql_query("SELECT * FROM ".TABLE_FACEBOOK." order by id")
@@ -25,7 +25,7 @@ $obj = new operationDb($conninfo);
 		$q = mysql_query(sprintf("select * from ".TABLE_HISTORY." where contents_id = '%d'",$row['contents_id']));
 		$goal_flag=mysql_fetch_assoc($q);
 		//---------------------------//
-		echo"<tr><td>id:".$row['id']."</td><td>name:".$row['facebook_name']."</td><td>email:".$row['facebook_email']."</td><td>created:".$row['created']."</td>";
+		echo"<tr><td>".$row['id']."</td><td>".$row['facebook_name']."</td><td>".$row['facebook_email']."</td><td>".$row['created']."</td>";
 		echo"<input type='hidden' name='contents_id' value='{$row['contents_id']}'>";
 		echo"</td>";
 		if(empty($goal_flag['goal'])):

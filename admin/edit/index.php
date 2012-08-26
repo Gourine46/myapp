@@ -1,5 +1,5 @@
 <?php
-require_once("../../class/member_db_class.php");
+require_once("../../class/db.class.php");
 session_start();
 $table = $_POST["table"];
 $inName=$_POST["id"];
@@ -28,11 +28,11 @@ $obj = new operationDb($conninfo);
 		<h2><a href="twitter.php">Twitterユーザー</a></h2>
 		<h2><a href="facebook.php">facebookユーザー</a></h2>
 		<table class=" table table-striped table-bordered table-condensed">
+		<?php echo"<th>id</th><th>name</th><th>pass</th><th>email</th><th>///</th><th>history</th>"; ?>
 	<?php while($row = mysql_fetch_array($result,MYSQL_ASSOC)){
 		$q = mysql_query(sprintf("select * from ".TABLE_HISTORY." where contents_id = '%d'",$row['contents_id']));
 		$goal_flag=mysql_fetch_assoc($q);
-		
-		echo"<tr><td>id:".$row['id']."</td><td>name:".$row['name']."</td><td>pass:".$row['pass']."</td><td>email:".$row['e_mail']."</td>";
+		echo"<tr><td>".$row['id']."</td><td>".$row['name']."</td><td>".$row['pass']."</td><td>".$row['e_mail']."</td>";
 		echo"<td><form method='post' action='mail.php'><input type='submit' value='メッセージを送信' name='mail_user'class='btn'>";
 		echo"<input type='hidden' name='id' value='{$row['id']}'>";
 		echo"</td>";

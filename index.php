@@ -1,5 +1,5 @@
 <?php
-require_once("class/member_db_class.php");
+require_once("class/db.class.php");
 session_start();
 $db = new ExpandDataBase();
 $result = $db->LogInNormal($_POST['name'],$_POST['password']);
@@ -24,6 +24,7 @@ $result = $db->LogInNormal($_POST['name'],$_POST['password']);
     <META NAME="keywords" CONTENT="GoalPlanet,goalplanet,todo,Todo,togattti,togashi">
     <title>Goal Planet</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/screen" type="text/css">
 </head>
 <body>
     <div class="container">
@@ -49,6 +50,22 @@ $result = $db->LogInNormal($_POST['name'],$_POST['password']);
         	<div style= "color:red;"><?php echo $error_message;?></div>
         </div>
 	  </div>
+	  <div class="span12">
+	  <div id="loopslider">
+			<ul>
+			<li><a href="#"><img src="img/photo01.jpg" width="100" height="100" alt="" /></a></li>
+			<li><a href="#"><img src="img/photo02.jpg" width="100" height="100" alt="" /></a></li>
+			<li><a href="#"><img src="img/photo03.jpg" width="100" height="100" alt="" /></a></li>
+			<li><a href="#"><img src="img/photo04.jpg" width="100" height="100" alt="" /></a></li>
+			<li><a href="#"><img src="img/photo05.jpg" width="100" height="100" alt="" /></a></li>
+			<li><a href="#"><img src="img/photo06.jpg" width="100" height="100" alt="" /></a></li>
+			<li><a href="#"><img src="img/photo07.jpg" width="100" height="100" alt="" /></a></li>
+			<li><a href="#"><img src="img/photo08.jpg" width="100" height="100" alt="" /></a></li>
+			<li><a href="#"><img src="img/photo09.jpg" width="100" height="100" alt="" /></a></li>
+			<li><a href="#"><img src="img/photo10.jpg" width="100" height="100" alt="" /></a></li>
+			</ul>
+		</div><!--/#loopslider-->
+	  </div><!--/.span12-->
 	  <div class="row">
         <div class="span4">
           <h2>サインアップ</h2>

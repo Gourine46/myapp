@@ -1,5 +1,5 @@
 <?php
-require_once("../../class/member_db_class.php");
+require_once("../../class/db.class.php");
 $obj = new operationDb($conninfo);
 /*動的に追加できるtodoリストを作成する。
  *チェック方式

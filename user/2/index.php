@@ -1,5 +1,5 @@
 <?php
-require_once("../../class/member_db_class.php");
+require_once("../../class/db.class.php");
 session_start();
 if(isset($_SESSION['row']['name']))$login_user_name = $_SESSION['row']['name'];//一般ログイン
 elseif(isset($_SESSION['user']))$login_user_name = $_SESSION['user']['facebook_name'];
@@ -9,8 +9,6 @@ $date = date("Y-m-d",time());
 $obj = new operationDb($conninfo);
 $obj->serachElement(TABLE_CONTENT,$login_user_name);
 $dead_day = date("Y-m-d",time()+($obj->row["dueDay"] * 24 * 60 * 60));
-
-
 ?>
 <html>
 	<head>

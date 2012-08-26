@@ -10,13 +10,13 @@ class ErrorCheck
 			$error_flag = false;
 			return $error_flag;
 		}
-		if($this->preg_code($name) === false || !$this->preg_code($email) === false)
+		if($this->preg_code($name) === false || $this->preg_code($email) === false)
 		{
 			$this->error_message = "半角英数字のみでお願いします";
 			$error_flag = false;
 			return $error_flag;
 		}
-		if($pass !== $pass2)
+		if($pass != $pass2)
 		{
 			$this->error_message = "パスワードが合致しません。もう一度記入してください";
 			$error_flag = false;
@@ -27,7 +27,7 @@ class ErrorCheck
 	
 	public function preg_code($string)
 	{
-		if(preg_match("/^[a-zA-Z0-9]+$/",$string) === false)
+		if(!preg_match("/^[!-~]+$/", $string))
 		{
 			return false;
 		}
