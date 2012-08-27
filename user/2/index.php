@@ -6,7 +6,7 @@ elseif(isset($_SESSION['user']))$login_user_name = $_SESSION['user']['facebook_n
 elseif(isset($_SESSION['twitter_user']['twitter_screen_name']))$login_user_name = $_SESSION['twitter_user']['twitter_screen_name'];
 elseif(empty($_SESSION))jump('');
 $date = date("Y-m-d",time());
-$obj = new operationDb($conninfo);
+$obj = new ExpandDataBase();
 $obj->serachElement(TABLE_CONTENT,$login_user_name);
 $dead_day = date("Y-m-d",time()+($obj->row["dueDay"] * 24 * 60 * 60));
 ?>

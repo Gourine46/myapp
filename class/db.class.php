@@ -36,14 +36,8 @@ class operationDb{
 		mysql_select_db(DB_NAME,$this->connect)
 		or die(mysql_error());
 	}
-	
-	public function saveIdPassDb($contents_id,$inname,$inpass,$in_e_mail){
-		$sql = "INSERT INTO ".TABLE_ADMIN."(contents_id,name,pass,e_mail) VALUES('$contents_id','$inname','$inpass','$in_e_mail')";
-		mysql_query($sql,$this->connect)or die(mysql_error());
-		
-	}
 	//上のやつと後で統合する。
-	public function saveContentDb($name,$goal,$dueDay,$contents_id){//ログイン時の名前と目標、期限
+	public function saveContentDb($name,$goal,$dueDay,$contents_id){//ログイン時の名前と目標、期限、後で廃止するからいじらなない
 		$q = sprintf("insert into ".TABLE_CONTENT."(adminId,goal,dueDay,contents_id,created,modified) values ('%s','%s','%s','%s',now(),now())",
 			$name,$goal,$dueDay,$contents_id);
 		$q_history = sprintf("insert into ".TABLE_HISTORY."(adminId,goal,dueDay,contents_id,created,modified) values ('%s','%s','%s','%s',now(),now())",
@@ -117,7 +111,13 @@ class ExpandDataBase extends operationDb{
 	{	
 		parent::__construct();
 	}
-	
+	public function saveIdPassDb($id,$pass,$mail)
+	{	
+		$user_id = $this->SetUserId();
+		$sql = "INSERT INTO ".TABLE_ADMIN."(user_id,name,pass,e_mail) VALUES('$user_id','$id','$pass','$mail')";
+		mysql_query($sql,$this->connect)or die(mysql_error());
+		return true;
+	}
 	public function LogInNormal($name,$pass){
 		/*twitter,facebook以外の普通のアカウントでのログイン認証
 		 * テーブルにデータが無ければ、falseを返す。
@@ -151,10 +151,10 @@ class ExpandDataBase extends operationDb{
 	}//LogInNormal
 	
 	public $history_save_flag = true;//historyテーブルにも履歴を残す。
-	public function SaveContents($id,$content,$contents_id)
+	public function SaveContents($id,$content,$user_id)
 	{	/*格納した配列contentをdbに入れる。フラグで履歴に関しても管理*/
 		//有無を判断した上で、
-		if(empty($id) || empty($content) || empty($contents_id))
+		if(empty($id) || empty($content) || empty($user_id))
 		{
 			return false;
 		}
@@ -162,31 +162,30 @@ class ExpandDataBase extends operationDb{
 		{
 			return false;
 		}
+		
 		foreach($content as $val)
-		{
-			$sql = sprintf("insert into ".TABLE_CONTENT." (adminId,content,contents_id,created,modified) values ('%s','%s','%s',now(),now())",
-			$id,$val,$contents_id);
-			mysql_query($sql)or die(mysql_error());
-		}
-		if($this->history_save_flag)
 		{	
-			foreach($content as $val)
-			{
-			$sql = sprintf("insert into ".TABLE_HISTORY." (adminId,content,contents_id,created,modified) values ('%s','%s','%s',now(),now())",
-			$id,$val,$contents_id);
+			$contents_id = $this->SetContentId();
+			$sql = sprintf("insert into ".TABLE_CONTENT." (adminId,user_id,content,contents_id,created,modified) values ('%s','%s','%s','%s',now(),now())",
+			$id,$user_id,$val,$contents_id);
 			mysql_query($sql)or die(mysql_error());
-			}
+			if($this->history_save_flag)
+			{	
+				$sql = sprintf("insert into ".TABLE_HISTORY." (adminId,user_id,content,contents_id,created,modified) values ('%s','%s','%s','%s',now(),now())",
+				$id,$user_id,$val,$contents_id);
+				mysql_query($sql)or die(mysql_error());
+			}	
 		}
 		return true;
 	}
 	
-	public function ReturnContents($id,$contents_id)
+	public function ReturnContents($user_id)
 	{		
-			if(empty($id) || empty($contents_id) )
+			if(empty($user_id))
 			{	$this->message = "idが空です";
 				return false;
 			}
-			$sql = sprintf("select * from ".TABLE_CONTENT." where AdminId = '%s' and contents_id = '%d' ",$id,$contents_id);
+			$sql = sprintf("select * from ".TABLE_CONTENT." where user_id = '%d' ",$user_id);
 			$rst = mysql_query($sql)or die(mysql_error());
 			if($rst)
 			{
@@ -194,18 +193,50 @@ class ExpandDataBase extends operationDb{
 				{
 					$rows[] = $row;
 				}
+				$this->count = $count;
 				$count = count($rows);
 				if(count($rows) == 0)
 				{
 					$this->message = "設定されたtodoがありません";
-					return false;
+					$rows = array();
+					return $rows;
 				}
 				$this->message = "あなたのタスクは".$count."件です";
 				return $rows;
 			}		
 	}
-	public function DeleteContents()
+	public function DeleteContents($array)//後でuser_idも指定する
 	{
-		
+		if(!is_array($array) || empty($array))
+		{
+			return false;
+		}
+		foreach($array as $val){
+			$sql = sprintf("delete from ".TABLE_CONTENT." where contents_id = '%s' ",$val);
+			mysql_query($sql)or die (mysql_error());
+		}
+		return true;
+	}
+	public function SetUserId()
+	{
+		srand((double) microtime() * 1000000);
+		for ($i = 1; $i <= 8; $i++)
+		{
+		$rs = rand(0, 8);
+		$a = substr('123456789', $rs, 1);
+		$id .= $a;
+		}
+		return $id;
+	}
+	public function SetContentId()
+	{
+		srand((double) microtime() * 1000000);
+		for ($i = 1; $i <= 8; $i++)
+		{
+		$rs = rand(0, 30);
+		$a = substr('123456789abcdefghijkABCDEFGHIJK', $rs, 1);
+		$id .= $a;
+		}
+		return $id;
 	}	
 }//ExpandDataBase

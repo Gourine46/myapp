@@ -42,15 +42,13 @@ if(empty($_GET['code'])) {
 	
 	$me = json_decode(file_get_contents($url),true);
 	//DBへ突っ込む
-	$obj = new operationDb($conninfo);
+	$obj = new ExpandDataBase();
 	$q = sprintf("select * from users where facebook_user_id='%s' limit 1",$me['id']);
 	$rs = mysql_query($q);
 	$user = mysql_fetch_assoc($rs);
 	if(empty($user)){
 		//データを挿入
-		$contents_id = get_contents_id();
-		$q = sprintf("insert into users (contents_id,facebook_user_id, facebook_name, facebook_picture, facebook_email, facebook_access_token, created, modified) values ('%s','%s','%s','%s','%s','%s',now(),now());",
-            $contents_id,
+		$q = sprintf("insert into users (facebook_user_id, facebook_name, facebook_picture, facebook_email, facebook_access_token, created, modified) values ('%s','%s','%s','%s','%s',now(),now());",
 			$me['id'],
             $me['name'],
             $me['picture']['data']['url'],

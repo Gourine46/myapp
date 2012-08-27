@@ -21,7 +21,7 @@ $rows = $_SESSION['rows'];
 		</tr>
 		<?php foreach($rows as $row):?>
 		<tr>
-			<td><?php echo$row['goal']; ?></td>
+			<td><?php echo$row['content']; ?></td>
 			<td><?php echo$row['created'];?></td>
 			<td><?php echo$row['type'];?></td>
 		</tr>

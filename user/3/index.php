@@ -4,13 +4,13 @@ session_cache_limiter('private_no_expire');
 session_start();
 	if(isset($_SESSION['row']['name'])):
 		$login_user_name = $_SESSION['row']['name'];
-		$contents_id = $_SESSION['row']['contents_id'];//一般ログイン
+		$user_id = $_SESSION['row']['user_id'];//一般ログイン
 	elseif(isset($_SESSION['user'])):
 		$login_user_name = $_SESSION['user']['facebook_name'];
-		$contents_id = $_SESSION['user']['contents_id'];	
+		$user_id = $_SESSION['user']['facebook_user_id'];	
 	elseif(isset($_SESSION['twitter_user']['twitter_screen_name'])):
 		$login_user_name = $_SESSION['twitter_user']['twitter_screen_name'];
-		$contents_id = $_SESSION['twitter_user']['contents_id'];
+		$user_id = $_SESSION['twitter_user']['twitter_user_id'];
 	elseif(empty($_SESSION)):
 		jump('');
 	endif;

@@ -56,7 +56,7 @@ $id .= $a;
 }
 return $id;
 }
-echo get_include_path();
+
 
 /*$conninfo = array(
 	'host' => 'localhost',

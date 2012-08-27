@@ -11,10 +11,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	}
 	elseif($error_check === true)
 	{
-		$contents_id = get_contents_id();
 		$db=new ExpandDataBase();
-		$db->saveIdPassDb($contents_id,$_POST['name'],$_POST['pass'],$_POST['e_mail']);
-		$_SESSION['conf_mail'] = $_POST['e_mail'];
+		$db->saveIdPassDb($_POST['name'],$_POST['pass'],$_POST['e_mail']);
 		jump("");
 	}
 }//REQUEST _METHOD

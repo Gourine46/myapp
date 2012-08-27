@@ -13,7 +13,7 @@ $me = $oauth->get('account/verify_credentials');
 
 //DBに突っ込む！
 
-$obj = new operationDb($conninfo);
+$obj = new ExpandDataBase();
 //使用テーブルはtwitter_users
 
 $q = sprintf("select * from twitter_users where twitter_user_id = '%s' limit 1", $me->id_str);
@@ -23,10 +23,8 @@ $twitter_user = mysql_fetch_assoc($rs);
 
 if(empty($twitter_user)){
 	//新しくユーザー情報を挿入
-	$contents_id = get_contents_id();
-	$q = sprintf("insert into twitter_users (contents_id,twitter_user_id, twitter_screen_name, twitter_profile_image_url, twitter_access_token, twitter_access_token_secret, created, modified) 
-	values ('%s','%s', '%s', '%s', '%s', '%s', now(), now());",
-		$contents_id,
+	$q = sprintf("insert into twitter_users (twitter_user_id, twitter_screen_name, twitter_profile_image_url, twitter_access_token, twitter_access_token_secret, created, modified) 
+	values ('%s', '%s', '%s', '%s', '%s', now(), now());",
 		$me->id_str,
 		$me->screen_name,
 		$me->profile_image_url,
