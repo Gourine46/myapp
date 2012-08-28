@@ -151,38 +151,30 @@ class ExpandDataBase extends operationDb{
 	}//LogInNormal
 	
 	public $history_save_flag = true;//historyテーブルにも履歴を残す。
-	public function SaveContents($id,$content,$user_id)
+	public function SaveContents($id,$content,$user_id,$due)
 	{	/*格納した配列contentをdbに入れる。フラグで履歴に関しても管理*/
 		//有無を判断した上で、
 		if(empty($id) || empty($content) || empty($user_id))
 		{
 			return false;
-		}
-		elseif(count($content) == 0)
-		{
-			return false;
-		}
-		
-		foreach($content as $val)
-		{	
-			$contents_id = $this->SetContentId();
-			$sql = sprintf("insert into ".TABLE_CONTENT." (adminId,user_id,content,contents_id,created,modified) values ('%s','%s','%s','%s',now(),now())",
-			$id,$user_id,$val,$contents_id);
-			mysql_query($sql)or die(mysql_error());
+		}	
+				$contents_id = $this->SetContentId();
+				$sql = sprintf("insert into ".TABLE_CONTENT." (adminId,user_id,content,contents_id,due,created,modified) values ('%s','%s','%s','%s','%s',now(),now())",
+				$id,$user_id,$content,$contents_id,$due);
+				mysql_query($sql)or die(mysql_error());
 			if($this->history_save_flag)
 			{	
 				$sql = sprintf("insert into ".TABLE_HISTORY." (adminId,user_id,content,contents_id,created,modified) values ('%s','%s','%s','%s',now(),now())",
-				$id,$user_id,$val,$contents_id);
+				$id,$user_id,$content,$contents_id);
 				mysql_query($sql)or die(mysql_error());
 			}	
-		}
 		return true;
 	}
 	
 	public function ReturnContents($user_id)
 	{		
 			if(empty($user_id))
-			{	$this->message = "idが空です";
+			{	$this->message = "idは空です";
 				return false;
 			}
 			$sql = sprintf("select * from ".TABLE_CONTENT." where user_id = '%d' ",$user_id);
