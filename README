@@ -1,15 +1,14 @@
-<<<<<<< HEAD
 【制作物】GoalPlanet
-【URL】http://togattti.lolipop.jp/myapp/
-【著作権者】@togattti(twiiterで...)
-【制作日】6/20~現在
-【連絡先】https://twitter.com/togattti
+【URL】<s>http://togattti.lolipop.jp/myapp/</s> (sorry.disabled.)
+【著作権者】kentatogasi
+【制作日】2012 6/20~8/27
+【連絡先】secret
 【開発環境】
-　　MacOS,Appache,MySQL5,PHP5
+　　MacOS,Linux,Apache,MySQL5,PHP5
 ―――――――――――――――――――――――――――――――――――――
 ≪著作権および免責事項≫
 著作権は作者
-である https://twitter.com/togattti が保有しています。
+である kentatogasi が保有しています。
 
 ・はじめに
 Todo管理ツール
@@ -24,7 +23,5 @@ index.phpよりログインしてください。
 
 ・履歴　7/21:α版を公開しました。
 ・8/14:facebookログイン機能実装しました。
-.8/27　仕様を大幅に変更しました。ユーザーによる複数登録及び期限をカレンダーから選択できるようになりました
-
-このあとはスマホしように改造する予定です。
->>>>>>> create_dev1.myapp
+.8/27　仕様を大幅に変更しました。ユーザーによる複数登録及び期限を
+カレンダーから選択できるようになりました
